@@ -18,19 +18,26 @@ dust.columns = dust.columns.str.strip()
 
 def storm_nearby(row):
     # Ls is solar longitude AKA seasons (0-90 Autumn, 90-180 Winter, 180-270 Spring, 270-360 Summer)
-    storms_list = dust[np.isclose(dust['Ls'], row['ls'], atol=0.2)]
+    # atol=0.5 means 0.5 degrees Ls = 0.93 sols = 22.9 hours. This is the amount of tolerance for whether a storm is considered close enough in time.
+    storms_list = dust[np.isclose(dust['Ls'], row['ls'], atol=0.5)]
 
+    # iterates through the list of storms within 0.5 degrees Ls
     for index, storm in storms_list.iterrows():
         area = storm['Area (square km)']
-        radius = np.sqrt(area / np.pi) / KM_PER_DEGREE
+        radius = np.sqrt(area / np.pi) / KM_PER_DEGREE # radius of the storm (assumption: storm has constant radius)
+        
+        # calculating distance between the location of the rover and center of dust storms
         dist = np.sqrt((storm['Centroid latitude'] - ROVER_LAT)**2 + (storm['Centroid longitude'] - ROVER_LONG)**2)
         
+        # the rover area is hit by a dust storm if it is within the storm radius
         if dist <= radius:
             return True
         
     return False
 
+# create new column for each sol based on whether a storm would be at the rover location or not
 weather['storming'] = [storm_nearby(row) for index, row in weather.iterrows()]
 
+# export to clean csv with relevant columns
 weather_clean = weather[['ls', 'min_temp', 'max_temp', 'pressure', 'storming']].dropna()
 weather_clean.to_csv("mldata/mars-training-data.csv", index=False)
