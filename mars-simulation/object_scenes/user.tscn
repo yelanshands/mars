@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djpjli1okeb0n"]
+[gd_scene load_steps=10 format=3 uid="uid://djpjli1okeb0n"]
 
 [ext_resource type="Script" uid="uid://b4un2rn50css7" path="res://object_scripts/user.gd" id="1_owt1n"]
 
@@ -6,13 +6,25 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2on77"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owt1n"]
+albedo_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_owt1n"]
+material = SubResource("StandardMaterial3D_owt1n")
 height = 2.5
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xajoo"]
+albedo_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4cdfn"]
+material = SubResource("StandardMaterial3D_xajoo")
 height = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cdfn"]
+albedo_color = Color(0.08855983, 0.08855996, 0.08855986, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_owt1n"]
+material = SubResource("StandardMaterial3D_4cdfn")
 top_radius = 0.6
 bottom_radius = 0.6
 height = 0.5

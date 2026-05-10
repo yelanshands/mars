@@ -6,6 +6,7 @@ var time: float = 0.0
 var bob_amp: float = 0.05
 var bob_speed: float = 1.5
 var def_arm_rot: float
+var def_arm_pos: float
 
 var friction: float = 0.1
 var air_resistance: float = 0.02
@@ -25,15 +26,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _process(delta: float) -> void:
-	pass
+#func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	var input = Input.get_vector("strafe_left", "strafe_right", "move_forward", "move_back")
 	var movement_dir = (transform.basis * Vector3(input.x, 0, input.y)).normalized()
 	var on_floor: bool = is_on_floor()
 	
-	#if not input:
 	time += delta * bob_speed
 	camera.position.y = sin(time) * bob_amp
 	
