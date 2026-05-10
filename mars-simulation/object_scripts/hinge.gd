@@ -9,7 +9,7 @@ var animation_done: bool = true
 var open_dist: float = 3.5
 var close_dist: float = 5.0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var dist = door.global_position.distance_to(globals.player.global_position)
 	if dist < open_dist:
 		opening = true

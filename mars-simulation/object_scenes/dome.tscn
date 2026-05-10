@@ -194,6 +194,10 @@ mesh = SubResource("BoxMesh_y5or2")
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_2xulb")
 
+[node name="CSGBakedCollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.98, 0, 0, 0, 1, 0, 0, 0, 0.98, 0, 0, 0.24128246)
+shape = SubResource("ConcavePolygonShape3D_2xulb")
+
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_cggl1")
 
