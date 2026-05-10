@@ -11,12 +11,12 @@ sky_top_color = Color(0.61791843, 0.3788529, 0.28679493, 1)
 sky_horizon_color = Color(0.7011158, 0.6335994, 0.6015849, 1)
 ground_horizon_color = Color(0.7011158, 0.6335994, 0.6015849, 1)
 
-[sub_resource type="Sky" id="Sky_c2xsf"]
+[sub_resource type="Sky" id="Sky_2xulb"]
 sky_material = SubResource("ProceduralSkyMaterial_y5or2")
 
 [sub_resource type="Environment" id="Environment_2xulb"]
 background_mode = 2
-sky = SubResource("Sky_c2xsf")
+sky = SubResource("Sky_2xulb")
 tonemap_mode = 2
 
 [node name="mars_surface" type="Node3D"]

@@ -13,13 +13,17 @@ func _physics_process(_delta):
 				clear_outline()
 				set_outline(mesh, true)
 				last_hovered = mesh
+		
+			collider.hovering = true
 			
-			if Input.is_action_just_pressed("left_click") and not collider.holding:
+			if Input.is_action_just_pressed("right_click") and not collider.holding:
+				get_parent().holding = collider.item_name
 				collider.hold_delay = true
 				collider.holding = true
 				collider.freeze = true
 				collider.collision_layer = 0
 				collider.collision_mask = 0
+				collider.hovering = false
 	else:
 		clear_outline()
 
@@ -32,4 +36,5 @@ func set_outline(mesh: MeshInstance3D, state: bool):
 func clear_outline():
 	if last_hovered:
 		set_outline(last_hovered, false)
+		last_hovered.get_parent().hovering = false
 		last_hovered = null

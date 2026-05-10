@@ -1,6 +1,10 @@
 extends CharacterBody3D
 @onready var camera: Camera3D = $Camera3D
 @onready var arm: MeshInstance3D = $Camera3D/arm
+@onready var instructions: Label = $CanvasLayer/Instructions
+
+var holding: String = ""
+var stopped_holding: bool = true
 
 var time: float = 0.0
 var bob_amp: float = 0.05
@@ -27,7 +31,16 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-#func _process(_delta: float) -> void:
+func _process(_delta: float) -> void:
+	if holding != "":
+		if not instructions.visible:
+			instructions.text = holding + "\n" + instructions.text
+			instructions.visible = true
+			stopped_holding = false
+	elif instructions.visible and not stopped_holding:
+		stopped_holding = true
+		instructions.visible = false
+		instructions.text = instructions.text.substr(instructions.text.find("\n") + 1, -1)
 
 func _physics_process(delta: float) -> void:
 	var input = Input.get_vector("strafe_left", "strafe_right", "move_forward", "move_back")
