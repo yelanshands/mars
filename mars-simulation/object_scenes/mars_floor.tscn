@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds2pr1pji50a5"]
+
+[ext_resource type="Material" uid="uid://dtxhj44deljv3" path="res://materials/mars_surface.tres" id="1_fn7gw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3mghn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_76olo"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="floor" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+material_override = ExtResource("1_fn7gw")
+mesh = SubResource("BoxMesh_3mghn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_76olo")

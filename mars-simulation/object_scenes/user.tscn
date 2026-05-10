@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://djpjli1okeb0n"]
+[gd_scene load_steps=11 format=3 uid="uid://djpjli1okeb0n"]
 
 [ext_resource type="Script" uid="uid://b4un2rn50css7" path="res://object_scripts/user.gd" id="1_owt1n"]
+[ext_resource type="Script" uid="uid://mvokfi0v5hvt" path="res://object_scripts/user_camera.gd" id="2_4cdfn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2on77"]
 
@@ -31,7 +32,6 @@ height = 0.5
 
 [node name="user" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 129
 script = ExtResource("1_owt1n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -42,6 +42,12 @@ shape = SubResource("CapsuleShape3D_2on77")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.6, -0.1)
+script = ExtResource("2_4cdfn")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+target_position = Vector3(0, 0, 5)
+collision_mask = 2
 
 [node name="arm" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(-0.15882783, -0.005253282, -0.19299257, 0.18449351, 0.06950352, -0.15372516, 0.056884862, -0.2400869, -0.040279582, 0.5140998, -0.44447958, -0.39447126)
@@ -51,6 +57,9 @@ skeleton = NodePath("../..")
 [node name="hand" type="MeshInstance3D" parent="Camera3D/arm"]
 transform = Transform3D(1.0000001, 4.4703484e-08, 1.7881393e-07, -5.9604645e-08, 1.0000005, 7.4505806e-08, -3.427267e-07, -1.4901161e-07, 1.0000005, 0.013573647, 1.0304947, 0.013535976)
 mesh = SubResource("CapsuleMesh_4cdfn")
+
+[node name="pickerupper" type="Node3D" parent="Camera3D/arm/hand"]
+transform = Transform3D(1, -4.4703484e-08, 3.7252903e-09, 0, 0.9999996, 0, -1.1175871e-08, -1.4901161e-08, 0.9999998, 0.086790085, 0.71714807, -0.090948105)
 
 [node name="sleeve" type="MeshInstance3D" parent="Camera3D/arm"]
 transform = Transform3D(1.0000001, 1.4901161e-08, 4.0978193e-08, -8.940697e-08, 1.0000002, -4.4703484e-08, -2.5331974e-07, -8.940697e-08, 1.0000007, 0.017456412, 0.790246, 0.0065789223)

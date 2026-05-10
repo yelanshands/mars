@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkhfrm6lusnl1"]
+
+[ext_resource type="Script" uid="uid://bjjmiuomr7s2u" path="res://menu_scripts/home_menu.gd" id="1_84g7t"]
+[ext_resource type="PackedScene" uid="uid://ds2pr1pji50a5" path="res://object_scenes/mars_floor.tscn" id="1_ye4u1"]
+[ext_resource type="PackedScene" uid="uid://dfh4kq3igr73s" path="res://object_scenes/dome.tscn" id="2_84g7t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ye4u1"]
+sky_top_color = Color(0.61791843, 0.3788529, 0.28679493, 1)
+sky_horizon_color = Color(0.7011158, 0.6335994, 0.6015849, 1)
+ground_horizon_color = Color(0.7011158, 0.6335994, 0.6015849, 1)
+
+[sub_resource type="Sky" id="Sky_c2xsf"]
+sky_material = SubResource("ProceduralSkyMaterial_ye4u1")
+
+[sub_resource type="Environment" id="Environment_84g7t"]
+background_mode = 2
+sky = SubResource("Sky_c2xsf")
+tonemap_mode = 2
+
+[node name="home_menu" type="Node3D"]
+script = ExtResource("1_84g7t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_84g7t")
+
+[node name="floor" parent="." instance=ExtResource("1_ye4u1")]
+
+[node name="dome" parent="." instance=ExtResource("2_84g7t")]
+
+[node name="hinge" parent="dome" index="1"]
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.8660254, 0, -0.50000006, 0.096697696, 0.9811209, -0.1674853, 0.4905605, -0.19339536, -0.8496756, 0, 2.47966, -11.842625)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 281.0
+offset_bottom = 123.0
+theme_override_font_sizes/font_size = 55
+text = "MARS Simulation! (WIP)"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 100.0
+offset_top = 400.0
+offset_right = 146.0
+offset_bottom = 431.0
+theme_override_font_sizes/font_size = 40
+text = " Start "
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+
+[editable path="dome"]
