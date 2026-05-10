@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8d4ot7cubsw4"]
+
+[ext_resource type="Script" uid="uid://bnslq42kp7uto" path="res://object_scripts/watercan.gd" id="1_n1cky"]
+[ext_resource type="Shader" uid="uid://b0pdsaom45eq6" path="res://shaders/outline.gdshader" id="2_46ye1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjwxv"]
+render_priority = 0
+shader = ExtResource("2_46ye1")
+shader_parameter/outline_width = 0.01
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/hovering = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46ye1"]
+next_pass = SubResource("ShaderMaterial_jjwxv")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nhq88"]
+material = SubResource("StandardMaterial3D_46ye1")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.45
+
+[sub_resource type="TorusMesh" id="TorusMesh_n1cky"]
+material = SubResource("StandardMaterial3D_46ye1")
+inner_radius = 0.175
+outer_radius = 0.25
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_46ye1"]
+material = SubResource("StandardMaterial3D_46ye1")
+top_radius = 0.04
+bottom_radius = 0.075
+height = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jjwxv"]
+material = SubResource("StandardMaterial3D_46ye1")
+top_radius = 0.08
+bottom_radius = 0.04
+height = 0.07
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nhq88"]
+height = 0.45
+radius = 0.2
+
+[node name="watercan" type="RigidBody3D"]
+script = ExtResource("1_n1cky")
+
+[node name="base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.018091828, 0)
+mesh = SubResource("CylinderMesh_nhq88")
+
+[node name="handle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.08260253, 0.23076716, 0)
+mesh = SubResource("TorusMesh_n1cky")
+
+[node name="spout stem" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, -0.24027503, 0.05268988, 0)
+mesh = SubResource("CylinderMesh_46ye1")
+
+[node name="spout head" type="MeshInstance3D" parent="spout stem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021412969, 0.23145613, 0)
+mesh = SubResource("CylinderMesh_jjwxv")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.018, 0)
+shape = SubResource("CylinderShape3D_nhq88")
+
+[node name="hover" type="Area3D" parent="."]
+monitorable = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="hover"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.018, 0)
+shape = SubResource("CylinderShape3D_nhq88")
+
+[connection signal="mouse_entered" from="hover" to="." method="_on_hover_mouse_entered"]
+[connection signal="mouse_exited" from="hover" to="." method="_on_hover_mouse_exited"]

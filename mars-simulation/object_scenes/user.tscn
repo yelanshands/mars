@@ -31,6 +31,7 @@ height = 0.5
 
 [node name="user" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 129
 script = ExtResource("1_owt1n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -19,6 +19,7 @@ var mars_gravity: float = gravity * 0.38
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	def_arm_rot = arm.rotation.z
+	globals.player = self
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -65,8 +66,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0.0
 
 	move_and_slide()
-	
-	print(velocity)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
