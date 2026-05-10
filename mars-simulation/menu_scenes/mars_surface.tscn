@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2youmkwnmq1d"]
+
+[ext_resource type="Script" uid="uid://cd0uver4kv3s2" path="res://menu_scripts/mars_surface.gd" id="1_3mghn"]
+[ext_resource type="Material" uid="uid://dtxhj44deljv3" path="res://materials/mars_surface.tres" id="2_76olo"]
+[ext_resource type="PackedScene" uid="uid://djpjli1okeb0n" path="res://object_scenes/user.tscn" id="3_y5or2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y5or2"]
+sky_top_color = Color(0.61791843, 0.3788529, 0.28679493, 1)
+sky_horizon_color = Color(0.7011158, 0.6335994, 0.6015849, 1)
+ground_horizon_color = Color(0.7011158, 0.6335994, 0.6015849, 1)
+
+[sub_resource type="Sky" id="Sky_c2xsf"]
+sky_material = SubResource("ProceduralSkyMaterial_y5or2")
+
+[sub_resource type="Environment" id="Environment_2xulb"]
+background_mode = 2
+sky = SubResource("Sky_c2xsf")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_3mghn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_76olo"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="mars_surface" type="Node3D"]
+script = ExtResource("1_3mghn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2xulb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+material_override = ExtResource("2_76olo")
+mesh = SubResource("BoxMesh_3mghn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_76olo")
+
+[node name="user" parent="." instance=ExtResource("3_y5or2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
