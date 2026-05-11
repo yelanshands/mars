@@ -19,29 +19,31 @@ func _physics_process(delta):
 	if raycast.is_colliding():
 		var collider = raycast.get_collider().get_parent()
 		var mesh = collider.get_node_or_null("OUTLINE") 
-		print(collider, mesh)
-		if mesh:
-			if mesh != last_hovered:
-				clear_outline()
-				set_outline(mesh, true)
-				last_hovered = mesh
-			
-			if not collider.holding:
-				if Input.is_action_just_pressed("right_click"):
-					if "grown" in collider:
-						if collider.grown:
-							pass
+		if collider:
+			if mesh:
+				if mesh != last_hovered:
+					clear_outline()
+					set_outline(mesh, true)
+					last_hovered = mesh
+					
+				if not collider.holding:
+					if Input.is_action_just_pressed("right_click"):
+						if "grown" in collider:
+							if collider.grown:
+								pass
+						else:
+							get_parent().holding = collider.item_name
+							collider.hold_delay = true
+							collider.holding = true
+							collider.freeze = true
+							collider.collision_layer = 0
+							collider.collision_mask = 0
+							raycast.get_collider().collision_layer = 0
+							collider.hovering = false
 					else:
-						get_parent().holding = collider.item_name
-						collider.hold_delay = true
-						collider.holding = true
-						collider.freeze = true
-						collider.collision_layer = 0
-						collider.collision_mask = 0
-						raycast.get_collider().collision_layer = 0
-						collider.hovering = false
-				else:
-					collider.hovering = true
+						collider.hovering = true
+			else:
+				clear_outline()
 	else:
 		clear_outline()
 

@@ -22,4 +22,4 @@ func _physics_process(_delta: float) -> void:
 		global_position.y = final_y_pos
 	elif hovering and globals.player.holding == "Watercan" and globals.player.using:
 		global_position.y = lerp(global_position.y, final_y_pos, growth_rate)
-	
+		$hover.global_position.y = def_y_pos
