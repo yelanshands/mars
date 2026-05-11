@@ -1,27 +1,7 @@
-[gd_scene load_steps=20 format=4 uid="uid://bu3651cnj4eij"]
+[gd_scene load_steps=16 format=4 uid="uid://bu3651cnj4eij"]
 
 [ext_resource type="PackedScene" uid="uid://qk3xdlwy1ovd" path="res://object_scenes/plant.tscn" id="1_13nqw"]
 [ext_resource type="Script" uid="uid://dbr1s48q4o2gv" path="res://object_scripts/plantboxlidhinge.gd" id="1_384cs"]
-[ext_resource type="Shader" uid="uid://b0pdsaom45eq6" path="res://shaders/outline.gdshader" id="2_qcppw"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwhod"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_qcppw")
-shader_parameter/outline_width = 0.01
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/hovering = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a6te"]
-next_pass = SubResource("ShaderMaterial_wwhod")
-albedo_color = Color(0.25514, 0.5516165, 0.32775378, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_id14k"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_0a6te")
-top_radius = 0.015
-bottom_radius = 0.011
-height = 0.25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13nqw"]
 transparency = 1
@@ -122,18 +102,16 @@ _surfaces = [{
 }]
 
 [node name="plant box" type="StaticBody3D"]
+collision_layer = 3
 
 [node name="plant" parent="." instance=ExtResource("1_13nqw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5496001, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="plant2" parent="." instance=ExtResource("1_13nqw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.55, 0)
+[node name="plantleft" parent="." instance=ExtResource("1_13nqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
 
-[node name="MeshInstance3D2" parent="plant2" index="1"]
-mesh = SubResource("CylinderMesh_id14k")
-
-[node name="plant3" parent="." instance=ExtResource("1_13nqw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.55, 0)
+[node name="plantright" parent="." instance=ExtResource("1_13nqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
 
 [node name="liddetector" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
@@ -170,6 +148,7 @@ size = Vector3(1, 1.7, 0.5)
 material = SubResource("StandardMaterial3D_f78cj")
 
 [node name="lid" type="StaticBody3D" parent="plantboxlidhinge"]
+collision_layer = 3
 
 [node name="lid collision" type="CollisionShape3D" parent="plantboxlidhinge/lid"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -244,5 +223,3 @@ mesh = SubResource("ArrayMesh_f78cj")
 transform = Transform3D(1, 0, 0, 0, -0.7071068, 0.70710677, 0, -0.70710677, -0.7071068, 0, 1.0556333, -0.34222004)
 light_energy = 0.5
 directional_shadow_max_distance = 5.0
-
-[editable path="plant2"]

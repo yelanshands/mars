@@ -19,7 +19,7 @@ func _physics_process(delta):
 	if raycast.is_colliding():
 		var collider = raycast.get_collider().get_parent()
 		var mesh = collider.get_node_or_null("OUTLINE") 
-		
+		print(collider, mesh)
 		if mesh:
 			if mesh != last_hovered:
 				clear_outline()
