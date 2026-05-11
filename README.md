@@ -3,7 +3,9 @@ Made with Godot Engine
 
 Languages: GDScript and Python
 
-## Play! [itch.io page](https://frappecchino.itch.io/mars-simulation)
+## Play! 
+
+In browser: [itch.io page](https://frappecchino.itch.io/mars-simulation)
 
 [v1 Video Demo](https://youtu.be/4YVjVeLYXBA) - May 10, 2026
 
