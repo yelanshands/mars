@@ -4,10 +4,13 @@ Languages: GDScript and Python
 
 [v1 Video Demo](https://youtu.be/4YVjVeLYXBA) - May 10, 2026
 
+[v2 Video Demo](https://youtu.be/nwnDfHLmqE4) - May 11, 2026
+
 ## Features
 - First person!
 - Walk around
 - Pick up objects (only a watercan for now)
+- Water the plants!
 
 ... Yeah, not a lot for now.
 
