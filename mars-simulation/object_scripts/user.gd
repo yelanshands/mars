@@ -5,8 +5,9 @@ extends CharacterBody3D
 
 var holding: String = ""
 var stopped_holding: bool = true
+var using: bool = false
 
-var bob_amp: float = 0.1
+var bob_amp: float = 0.075
 var def_arm_rot: float
 var def_arm_pos: float
 
@@ -78,6 +79,6 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotation.y -= event.relative.x * cam_sens
-		camera.rotation.x = clamp(camera.rotation.x - event.relative.y * cam_sens, -0.9, 1.0)
+		camera.rotation.x = clamp(camera.rotation.x - event.relative.y * cam_sens, -1.0, 1.2)
 	
 	

@@ -17,7 +17,7 @@ func _physics_process(delta):
 	position.y = def_y_pos + sin(time) * bob_amp
 	
 	if raycast.is_colliding():
-		var collider = raycast.get_collider()
+		var collider = raycast.get_collider().get_parent()
 		var mesh = collider.get_node_or_null("OUTLINE") 
 		
 		if mesh:
@@ -25,17 +25,23 @@ func _physics_process(delta):
 				clear_outline()
 				set_outline(mesh, true)
 				last_hovered = mesh
-		
-			collider.hovering = true
 			
-			if Input.is_action_just_pressed("right_click") and not collider.holding:
-				get_parent().holding = collider.item_name
-				collider.hold_delay = true
-				collider.holding = true
-				collider.freeze = true
-				collider.collision_layer = 0
-				collider.collision_mask = 0
-				collider.hovering = false
+			if not collider.holding:
+				if Input.is_action_just_pressed("right_click"):
+					if "grown" in collider:
+						if collider.grown:
+							pass
+					else:
+						get_parent().holding = collider.item_name
+						collider.hold_delay = true
+						collider.holding = true
+						collider.freeze = true
+						collider.collision_layer = 0
+						collider.collision_mask = 0
+						raycast.get_collider().collision_layer = 0
+						collider.hovering = false
+				else:
+					collider.hovering = true
 	else:
 		clear_outline()
 

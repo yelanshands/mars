@@ -23,13 +23,13 @@ func _physics_process(_delta: float) -> void:
 	
 	if not animation_done:
 		if opening:
-			if rotation.y < open_rot * 1.005:
+			if rotation.y <= open_rot + 0.01:
 				rotation.y = open_rot
 				animation_done = true
 			else:
 				rotation.y = lerp(rotation.y, open_rot, 0.1)
 		else:
-			if rotation.y >= close_rot * 0.995:
+			if rotation.y >= close_rot + 0.01:
 				rotation.y = close_rot
 				animation_done = true
 			else:

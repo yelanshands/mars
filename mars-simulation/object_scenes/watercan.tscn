@@ -41,10 +41,9 @@ height = 0.45
 radius = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_46ye1"]
-radius = 1.0
+radius = 0.7
 
 [node name="watercan" type="RigidBody3D"]
-collision_layer = 3
 script = ExtResource("1_n1cky")
 
 [node name="OUTLINE" type="MeshInstance3D" parent="."]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=4 uid="uid://dfh4kq3igr73s"]
 
 [ext_resource type="PackedScene" uid="uid://bu3651cnj4eij" path="res://object_scenes/plant_box.tscn" id="1_46vk1"]
-[ext_resource type="Script" uid="uid://oq4k3egwbmxd" path="res://object_scripts/hinge.gd" id="1_twfq8"]
+[ext_resource type="Script" uid="uid://oq4k3egwbmxd" path="res://object_scripts/doorhinge.gd" id="1_twfq8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5or2"]
 transparency = 1
@@ -157,7 +157,7 @@ mesh = SubResource("TorusMesh_2xulb")
 [node name="StaticBody3D" type="StaticBody3D" parent="hallway"]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="hallway/StaticBody3D"]
-transform = Transform3D(3, 0, 0, 0, 0.23, -3.0893165e-14, 0, 7.105428e-15, 1, 0, 5.9604645e-08, 1.5669284)
+transform = Transform3D(3, 0, 0, 0, 0.22999999, -3.1086245e-14, 0, 0, 1, 0, 7.4505806e-08, 1.6541638)
 shape = SubResource("BoxShape3D_c2xsf")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="hallway/StaticBody3D"]

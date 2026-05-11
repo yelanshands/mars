@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://qk3xdlwy1ovd"]
+
+[ext_resource type="Script" uid="uid://b5k7nht17qj57" path="res://object_scripts/plant.gd" id="1_o0tlq"]
+[ext_resource type="Shader" uid="uid://b0pdsaom45eq6" path="res://shaders/outline.gdshader" id="2_gfk7o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwhod"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_gfk7o")
+shader_parameter/outline_width = 0.01
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/hovering = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a6te"]
+next_pass = SubResource("ShaderMaterial_wwhod")
+albedo_color = Color(0.25514, 0.5516165, 0.32775378, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dy4cy"]
+material = SubResource("StandardMaterial3D_0a6te")
+top_radius = 0.01
+bottom_radius = 0.007
+height = 0.25
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_laxg8"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_0a6te")
+top_radius = 0.015
+bottom_radius = 0.011
+height = 0.25
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c7jk8"]
+material = SubResource("StandardMaterial3D_0a6te")
+top_radius = 0.012
+bottom_radius = 0.01
+height = 0.25
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o0tlq"]
+radius = 0.25
+height = 1.0
+
+[node name="plant" type="Node3D"]
+script = ExtResource("1_o0tlq")
+
+[node name="OUTLINE" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9943861, -0.10581285, 0, 0.10581285, 0.9943861, 0, 0, 0, 1, -0.0055672824, 0, -0.004515834)
+mesh = SubResource("CylinderMesh_dy4cy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9948206, 0.101646654, 0, -0.101646654, 0.9948206, 0.031725794, 0.06007552, -0.06850502)
+mesh = SubResource("CylinderMesh_laxg8")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9467694, 0.07740609, -0.31246758, -0.08148624, 0.9966745, 0, 0.31142846, 0.025461808, 0.9499284, 0.05187443, 0.02365762, 0.0245568)
+mesh = SubResource("CylinderMesh_c7jk8")
+
+[node name="hover" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hover"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CapsuleShape3D_o0tlq")
