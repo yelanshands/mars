@@ -6,9 +6,7 @@ extends CharacterBody3D
 var holding: String = ""
 var stopped_holding: bool = true
 
-var time: float = 0.0
-var bob_amp: float = 0.05
-var bob_speed: float = 1.5
+var bob_amp: float = 0.1
 var def_arm_rot: float
 var def_arm_pos: float
 
@@ -46,9 +44,6 @@ func _physics_process(delta: float) -> void:
 	var input = Input.get_vector("strafe_left", "strafe_right", "move_forward", "move_back")
 	var movement_dir = (transform.basis * Vector3(input.x, 0, input.y)).normalized()
 	var on_floor: bool = is_on_floor()
-	
-	time += delta * bob_speed
-	camera.position.y = sin(time) * bob_amp
 	
 	var lerp_vel = lerp(velocity, (-movement_dir * speed), friction if on_floor else air_resistance)
 	velocity = Vector3(lerp_vel.x, velocity.y, lerp_vel.z)

@@ -1,9 +1,21 @@
 extends Camera3D
 
 @onready var raycast = $RayCast3D
+
 var last_hovered: MeshInstance3D = null
 
-func _physics_process(_delta):
+var time: float = 0.0
+var bob_amp: float = 0.05
+var bob_speed: float = 1.5
+var def_y_pos: float
+
+func _ready() -> void:
+	def_y_pos = position.y
+
+func _physics_process(delta):
+	time += delta * bob_speed
+	position.y = def_y_pos + sin(time) * bob_amp
+	
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		var mesh = collider.get_node_or_null("OUTLINE") 

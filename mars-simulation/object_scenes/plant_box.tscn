@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://bu3651cnj4eij"]
+
+[ext_resource type="Script" uid="uid://dbr1s48q4o2gv" path="res://object_scripts/plantboxlidhinge.gd" id="1_384cs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13nqw"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.5882353)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcppw"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.5882353)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_id14k"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.5882353)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f78cj"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.5882353)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_384cs"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2r8g"]
+albedo_color = Color(0.379932, 0.18873608, 0.09413131, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_384cs"]
+material = SubResource("StandardMaterial3D_o2r8g")
+size = Vector3(1.7, 0.65, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o2r8g"]
+size = Vector3(2, 0.85, 1)
+
+[node name="plant box" type="StaticBody3D"]
+
+[node name="liddetector" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="plantboxlidhinge" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+script = ExtResource("1_384cs")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="plantboxlidhinge"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+radius = 0.425
+height = 1.7
+sides = 32
+material = SubResource("StandardMaterial3D_13nqw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="plantboxlidhinge/CSGCylinder3D"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.35, 0, 0)
+operation = 2
+size = Vector3(2, 0.7, 1)
+material = SubResource("StandardMaterial3D_qcppw")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="plantboxlidhinge/CSGCylinder3D"]
+operation = 2
+radius = 0.35
+height = 1.7
+sides = 32
+material = SubResource("StandardMaterial3D_id14k")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="plantboxlidhinge/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+operation = 2
+size = Vector3(1, 1.7, 0.5)
+material = SubResource("StandardMaterial3D_f78cj")
+
+[node name="base" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.425, 0)
+size = Vector3(2, 0.85, 1)
+material = SubResource("StandardMaterial3D_384cs")
+
+[node name="inner" type="CSGBox3D" parent="base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+operation = 2
+size = Vector3(1.7, 0.85, 0.7)
+material = SubResource("StandardMaterial3D_384cs")
+
+[node name="soil" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("BoxMesh_384cs")
+
+[node name="box collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.425, 0)
+shape = SubResource("BoxShape3D_o2r8g")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.85, 0)
+sides = 32
+material = SubResource("StandardMaterial3D_384cs")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCylinder3D2"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.35, 0, 0)
+operation = 2
+size = Vector3(2, 0.7, 1)
+material = SubResource("StandardMaterial3D_384cs")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D2"]
+operation = 2
+radius = 0.425
+height = 1.7
+sides = 32
+material = SubResource("StandardMaterial3D_384cs")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCylinder3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+operation = 2
+size = Vector3(1, 1.7, 0.5)
+material = SubResource("StandardMaterial3D_384cs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.7071068, 0.70710677, 0, -0.70710677, -0.7071068, 0, 1.0556333, -0.34222004)
+light_energy = 0.5
+directional_shadow_max_distance = 5.0

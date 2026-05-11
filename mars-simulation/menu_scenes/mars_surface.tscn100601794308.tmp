@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2youmkwnmq1d"]
+
+[ext_resource type="Script" uid="uid://cd0uver4kv3s2" path="res://menu_scripts/mars_surface.gd" id="1_3mghn"]
+[ext_resource type="PackedScene" uid="uid://ds2pr1pji50a5" path="res://object_scenes/mars_floor.tscn" id="2_2xulb"]
+[ext_resource type="PackedScene" uid="uid://djpjli1okeb0n" path="res://object_scenes/user.tscn" id="3_y5or2"]
+[ext_resource type="PackedScene" uid="uid://dfh4kq3igr73s" path="res://object_scenes/dome.tscn" id="4_2xulb"]
+[ext_resource type="PackedScene" uid="uid://b8d4ot7cubsw4" path="res://object_scenes/watercan.tscn" id="5_2xulb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y5or2"]
+sky_top_color = Color(0.61791843, 0.3788529, 0.28679493, 1)
+sky_horizon_color = Color(0.7011158, 0.6335994, 0.6015849, 1)
+ground_horizon_color = Color(0.7011158, 0.6335994, 0.6015849, 1)
+
+[sub_resource type="Sky" id="Sky_2xulb"]
+sky_material = SubResource("ProceduralSkyMaterial_y5or2")
+
+[sub_resource type="Environment" id="Environment_2xulb"]
+background_mode = 2
+sky = SubResource("Sky_2xulb")
+tonemap_mode = 2
+
+[node name="mars_surface" type="Node3D"]
+script = ExtResource("1_3mghn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2xulb")
+
+[node name="floor" parent="." instance=ExtResource("2_2xulb")]
+
+[node name="user" parent="." instance=ExtResource("3_y5or2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10.336097)
+
+[node name="dome" parent="." instance=ExtResource("4_2xulb")]
+
+[node name="watercan" parent="." instance=ExtResource("5_2xulb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 9)
