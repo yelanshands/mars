@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkhfrm6lusnl1"]
+[gd_scene load_steps=7 format=3 uid="uid://bkhfrm6lusnl1"]
 
 [ext_resource type="Script" uid="uid://bjjmiuomr7s2u" path="res://menu_scripts/home_menu.gd" id="1_84g7t"]
 [ext_resource type="PackedScene" uid="uid://ds2pr1pji50a5" path="res://object_scenes/mars_floor.tscn" id="1_ye4u1"]
 [ext_resource type="PackedScene" uid="uid://dfh4kq3igr73s" path="res://object_scenes/dome.tscn" id="2_84g7t"]
-[ext_resource type="Shader" uid="uid://b0pdsaom45eq6" path="res://shaders/outline.gdshader" id="4_pix7v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ye4u1"]
 sky_top_color = Color(0.61791843, 0.3788529, 0.28679493, 1)
@@ -18,25 +17,6 @@ background_mode = 2
 sky = SubResource("Sky_c2xsf")
 tonemap_mode = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwhod"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("4_pix7v")
-shader_parameter/outline_width = 0.01
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/hovering = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a6te"]
-next_pass = SubResource("ShaderMaterial_wwhod")
-albedo_color = Color(0.25514, 0.5516165, 0.32775378, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_6kn1n"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_0a6te")
-top_radius = 0.015
-bottom_radius = 0.011
-height = 0.25
-
 [node name="home_menu" type="Node3D"]
 script = ExtResource("1_84g7t")
 
@@ -50,9 +30,6 @@ environment = SubResource("Environment_84g7t")
 [node name="floor" parent="." instance=ExtResource("1_ye4u1")]
 
 [node name="dome" parent="." instance=ExtResource("2_84g7t")]
-
-[node name="MeshInstance3D2" parent="dome/plant box/plant2" index="1"]
-mesh = SubResource("CylinderMesh_6kn1n")
 
 [node name="plantboxlidhinge" parent="dome/plant box" index="4"]
 script = null
@@ -85,4 +62,3 @@ text = " Start "
 
 [editable path="dome"]
 [editable path="dome/plant box"]
-[editable path="dome/plant box/plant2"]

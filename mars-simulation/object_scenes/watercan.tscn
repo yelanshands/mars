@@ -12,6 +12,7 @@ shader_parameter/hovering = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46ye1"]
 next_pass = SubResource("ShaderMaterial_jjwxv")
+albedo_color = Color(0.4516216, 0.5391888, 0.8737122, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_nhq88"]
 material = SubResource("StandardMaterial3D_46ye1")

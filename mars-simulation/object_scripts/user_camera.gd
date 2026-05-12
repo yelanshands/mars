@@ -32,7 +32,7 @@ func _physics_process(delta):
 							if collider.grown:
 								pass
 						else:
-							get_parent().holding = collider.item_name
+							get_parent().holding = collider
 							collider.hold_delay = true
 							collider.holding = true
 							collider.freeze = true

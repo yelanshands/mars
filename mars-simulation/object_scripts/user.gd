@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var arm: MeshInstance3D = $Camera3D/arm
 @onready var instructions: Label = $CanvasLayer/Instructions
 
-var holding: String = ""
+var holding: Node3D
 var stopped_holding: bool = true
 var using: bool = false
 
@@ -31,9 +31,9 @@ func _input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(_delta: float) -> void:
-	if holding != "":
+	if holding:
 		if not instructions.visible:
-			instructions.text = holding + "\n" + instructions.text
+			instructions.text = holding.item_name + "\n" + instructions.text
 			instructions.visible = true
 			stopped_holding = false
 	elif instructions.visible and not stopped_holding:

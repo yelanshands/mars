@@ -44,16 +44,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if holding and not hold_delay:
 		if Input.is_action_just_pressed("right_click"):
-			globals.player.holding = ""
-			globals.player.using = false
-			freeze = false
-			holding = false
-			tight_hold = false
-			pouring = false
-			global_rotation.z = 0.0
-			collision_layer = 3
-			collision_mask = 1
-			$hover.collision_layer = 2
+			drop()
 		else:
 			if Input.is_action_pressed("left_click"):
 				if tight_hold:
@@ -64,3 +55,14 @@ func _physics_process(_delta: float) -> void:
 				globals.player.using = false
 	hold_delay = false
 		
+func drop() -> void:
+	globals.player.holding = null
+	globals.player.using = false
+	freeze = false
+	holding = false
+	tight_hold = false
+	pouring = false
+	global_rotation.z = 0.0
+	collision_layer = 3
+	collision_mask = 1
+	$hover.collision_layer = 2

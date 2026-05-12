@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://bu3651cnj4eij"]
+[gd_scene load_steps=17 format=4 uid="uid://bu3651cnj4eij"]
 
 [ext_resource type="PackedScene" uid="uid://qk3xdlwy1ovd" path="res://object_scenes/plant.tscn" id="1_13nqw"]
 [ext_resource type="Script" uid="uid://dbr1s48q4o2gv" path="res://object_scripts/plantboxlidhinge.gd" id="1_384cs"]
+[ext_resource type="Script" uid="uid://c4xk7b6i6toil" path="res://object_scripts/plant_box.gd" id="1_qcppw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13nqw"]
 transparency = 1
@@ -103,6 +104,7 @@ _surfaces = [{
 
 [node name="plant box" type="StaticBody3D"]
 collision_layer = 3
+script = ExtResource("1_qcppw")
 
 [node name="plant" parent="." instance=ExtResource("1_13nqw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -112,6 +114,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
 
 [node name="plantright" parent="." instance=ExtResource("1_13nqw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+
+[node name="hint_text" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7933893, 0)
+visible = false
+billboard = 2
+text = "Harvest [RMB]"
 
 [node name="liddetector" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
@@ -221,5 +229,5 @@ mesh = SubResource("ArrayMesh_f78cj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.7071068, 0.70710677, 0, -0.70710677, -0.7071068, 0, 1.0556333, -0.34222004)
-light_energy = 0.5
+light_energy = 0.1
 directional_shadow_max_distance = 5.0

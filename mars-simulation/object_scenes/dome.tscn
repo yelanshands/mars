@@ -105,7 +105,40 @@ _surfaces = [{
 [node name="dome" type="StaticBody3D"]
 
 [node name="plant box" parent="." instance=ExtResource("1_46vk1")]
-transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 0, 0.8, 13)
+transform = Transform3D(-4.569558e-08, 0, -1, 0, 1, 0, 1, 0, -4.569558e-08, 4, 0.8, 7.72073)
+
+[node name="plant box2" parent="." instance=ExtResource("1_46vk1")]
+transform = Transform3D(-4.569558e-08, 0, -1, 0, 1, 0, 1, 0, -4.569558e-08, 4, 0.8, 9.72073)
+
+[node name="plant box3" parent="." instance=ExtResource("1_46vk1")]
+transform = Transform3D(-4.569558e-08, 0, -1, 0, 1, 0, 1, 0, -4.569558e-08, 4, 0.8, 11.72073)
+
+[node name="plant box4" parent="." instance=ExtResource("1_46vk1")]
+transform = Transform3D(-4.569558e-08, 0, -1, 0, 1, 0, 1, 0, -4.569558e-08, 4, 0.8, 13.72073)
+
+[node name="plant box5" parent="." instance=ExtResource("1_46vk1")]
+transform = Transform3D(-4.569558e-08, 0, -1, 0, 1, 0, 1, 0, -4.569558e-08, 4, 0.8, 15.72073)
+
+[node name="plant box6" parent="." instance=ExtResource("1_46vk1")]
+transform = Transform3D(-4.569558e-08, 0, -1, 0, 1, 0, 1, 0, -4.569558e-08, 4, 0.8, 17.72073)
+
+[node name="plant box7" parent="." instance=ExtResource("1_46vk1")]
+transform = Transform3D(1.3311836e-07, 0, 1, 0, 1, 0, -1, 0, 1.3311836e-07, -3.0000005, 0.8, 17.72073)
+
+[node name="plant box8" parent="." instance=ExtResource("1_46vk1")]
+transform = Transform3D(1.3311836e-07, 0, 1, 0, 1, 0, -1, 0, 1.3311836e-07, -3.0000002, 0.8, 15.72073)
+
+[node name="plant box9" parent="." instance=ExtResource("1_46vk1")]
+transform = Transform3D(1.3311836e-07, 0, 1, 0, 1, 0, -1, 0, 1.3311836e-07, -3, 0.8, 13.72073)
+
+[node name="plant box10" parent="." instance=ExtResource("1_46vk1")]
+transform = Transform3D(1.3311836e-07, 0, 1, 0, 1, 0, -1, 0, 1.3311836e-07, -3, 0.8, 11.72073)
+
+[node name="plant box11" parent="." instance=ExtResource("1_46vk1")]
+transform = Transform3D(1.3311836e-07, 0, 1, 0, 1, 0, -1, 0, 1.3311836e-07, -2.9999995, 0.8, 9.72073)
+
+[node name="plant box12" parent="." instance=ExtResource("1_46vk1")]
+transform = Transform3D(1.3311836e-07, 0, 1, 0, 1, 0, -1, 0, 1.3311836e-07, -2.9999995, 0.8, 7.72073)
 
 [node name="doordetector" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
