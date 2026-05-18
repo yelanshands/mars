@@ -24,7 +24,7 @@ def storm_nearby(row):
     # iterates through the list of storms within 0.5 degrees Ls
     for index, storm in storms_list.iterrows():
         area = storm['Area (square km)']
-        radius = np.sqrt(area / np.pi) / KM_PER_DEGREE # radius of the storm (assumption: storm has constant radius)
+        radius = np.sqrt(area / np.pi) / KM_PER_DEGREE # radius of the storm (assumption: storm has constant radius AKA is a perfect circle)
         
         # calculating distance between the location of the rover and center of dust storms
         dist = np.sqrt((storm['Centroid latitude'] - ROVER_LAT)**2 + (storm['Centroid longitude'] - ROVER_LONG)**2)
