@@ -181,7 +181,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.189, 0.53, 0)
 shape = SubResource("BoxShape3D_knqqx")
 
 [node name="viewbase" type="MeshInstance3D" parent="microscope"]
-transform = Transform3D(0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0, 0, 1, 0, 1, 0.125)
+transform = Transform3D(0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0, 0, 1, 0, 1, 0.12)
 mesh = SubResource("CylinderMesh_dkqib")
 
 [node name="CSGMesh3D" type="CSGCylinder3D" parent="microscope/viewbase"]
@@ -201,7 +201,7 @@ sides = 32
 material = SubResource("StandardMaterial3D_142wf")
 
 [node name="viewbase2" type="MeshInstance3D" parent="microscope"]
-transform = Transform3D(0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0, 0, 1, 0, 1, -0.125)
+transform = Transform3D(0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0, 0, 1, 0, 1, -0.12)
 mesh = SubResource("CylinderMesh_dkqib")
 
 [node name="CSGMesh3D" type="CSGCylinder3D" parent="microscope/viewbase2"]
