@@ -1,0 +1,278 @@
+[gd_scene load_steps=34 format=3 uid="uid://bwqlaep0tiup8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkqib"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dkqib"]
+material = SubResource("StandardMaterial3D_dkqib")
+size = Vector3(2, 0.25, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_knqqx"]
+albedo_color = Color(0.57700837, 0.5770084, 0.57700837, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_knqqx"]
+material = SubResource("StandardMaterial3D_knqqx")
+size = Vector3(0.25, 1, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ybs5p"]
+size = Vector3(1.25, 0.15, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dkqib"]
+size = Vector3(2, 1.25, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_knqqx"]
+size = Vector3(1.2, 1.55, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybs5p"]
+albedo_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dkqib"]
+material = SubResource("StandardMaterial3D_ybs5p")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r31mc"]
+albedo_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_142wf"]
+albedo_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8bxx"]
+albedo_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jr16m"]
+albedo_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h76a"]
+albedo_color = Color(0.4889763, 0.45302963, 0.40528855, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_dkqib"]
+material = SubResource("StandardMaterial3D_0h76a")
+left_to_right = 0.4
+size = Vector3(0.5, 0.25, 0.55)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yal28"]
+albedo_color = Color(0.4889763, 0.45302963, 0.40528855, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_knqqx"]
+material = SubResource("StandardMaterial3D_yal28")
+top_radius = 0.2
+bottom_radius = 0.15
+height = 0.125
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ybs5p"]
+material = SubResource("StandardMaterial3D_ybs5p")
+top_radius = 0.175
+bottom_radius = 0.175
+height = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r31mc"]
+material = SubResource("StandardMaterial3D_ybs5p")
+top_radius = 0.035
+bottom_radius = 0.035
+height = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6q5l"]
+albedo_color = Color(0.4889763, 0.45302963, 0.40528855, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_142wf"]
+material = SubResource("StandardMaterial3D_m6q5l")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtpr4"]
+albedo_color = Color(0.4889763, 0.45302963, 0.40528855, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_knqqx"]
+material = SubResource("StandardMaterial3D_vtpr4")
+left_to_right = 1.0
+size = Vector3(0.7, 0.2, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5334f"]
+albedo_color = Color(0.4889763, 0.45302963, 0.40528855, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r31mc"]
+material = SubResource("StandardMaterial3D_5334f")
+size = Vector3(0.2, 0.75, 0.15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n78xj"]
+albedo_color = Color(0.4889763, 0.45302963, 0.40528855, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_142wf"]
+material = SubResource("StandardMaterial3D_n78xj")
+left_to_right = 1.0
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u8bxx"]
+material = SubResource("StandardMaterial3D_ybs5p")
+size = Vector3(0.5, 0.05, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u8bxx"]
+material = SubResource("StandardMaterial3D_ybs5p")
+top_radius = 0.07
+bottom_radius = 0.07
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx160"]
+albedo_color = Color(0.4889763, 0.45302963, 0.40528855, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_142wf"]
+material = SubResource("StandardMaterial3D_tx160")
+size = Vector3(0.7, 0.2, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_io8o0"]
+albedo_color = Color(0.4889763, 0.45302963, 0.40528855, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_u8bxx"]
+material = SubResource("StandardMaterial3D_io8o0")
+left_to_right = 0.0
+size = Vector3(0.2, 0.2, 0.5)
+
+[node name="biotechlab" type="Node3D"]
+
+[node name="table" type="StaticBody3D" parent="."]
+
+[node name="top" type="MeshInstance3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, 0)
+mesh = SubResource("BoxMesh_dkqib")
+
+[node name="leg1" type="MeshInstance3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.5, 0.75)
+mesh = SubResource("BoxMesh_knqqx")
+
+[node name="leg2" type="MeshInstance3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.5, 0.75)
+mesh = SubResource("BoxMesh_knqqx")
+
+[node name="leg3" type="MeshInstance3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.5, -0.75)
+mesh = SubResource("BoxMesh_knqqx")
+
+[node name="leg4" type="MeshInstance3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.5, -0.75)
+mesh = SubResource("BoxMesh_knqqx")
+
+[node name="support1" type="MeshInstance3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, 0.7)
+mesh = SubResource("BoxMesh_ybs5p")
+
+[node name="support2" type="MeshInstance3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, -0.7)
+mesh = SubResource("BoxMesh_ybs5p")
+
+[node name="support3" type="MeshInstance3D" parent="table"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.7, 0.925, 0)
+mesh = SubResource("BoxMesh_ybs5p")
+
+[node name="support4" type="MeshInstance3D" parent="table"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.7, 0.925, 0)
+mesh = SubResource("BoxMesh_ybs5p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+shape = SubResource("BoxShape3D_dkqib")
+
+[node name="microscope" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022654533, 1.4953793, 0.45168984)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="microscope"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.189, 0.53, 0)
+shape = SubResource("BoxShape3D_knqqx")
+
+[node name="viewbase" type="MeshInstance3D" parent="microscope"]
+transform = Transform3D(0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0, 0, 1, 0, 1, 0.125)
+mesh = SubResource("CylinderMesh_dkqib")
+
+[node name="CSGMesh3D" type="CSGCylinder3D" parent="microscope/viewbase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2750001, 0)
+operation = 2
+radius = 0.075
+height = 0.25
+sides = 32
+material = SubResource("StandardMaterial3D_r31mc")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="microscope/viewbase/CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+operation = 2
+radius = 0.05
+height = 0.025
+sides = 32
+material = SubResource("StandardMaterial3D_142wf")
+
+[node name="viewbase2" type="MeshInstance3D" parent="microscope"]
+transform = Transform3D(0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0, 0, 1, 0, 1, -0.125)
+mesh = SubResource("CylinderMesh_dkqib")
+
+[node name="CSGMesh3D" type="CSGCylinder3D" parent="microscope/viewbase2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2750001, 0)
+operation = 2
+radius = 0.075
+height = 0.25
+sides = 32
+material = SubResource("StandardMaterial3D_u8bxx")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="microscope/viewbase2/CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+operation = 2
+radius = 0.05
+height = 0.025
+sides = 32
+material = SubResource("StandardMaterial3D_jr16m")
+
+[node name="triangle" type="MeshInstance3D" parent="microscope"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23, 0.912, 0)
+mesh = SubResource("PrismMesh_dkqib")
+
+[node name="scope" type="MeshInstance3D" parent="microscope"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225, 0.725, 0)
+mesh = SubResource("CylinderMesh_knqqx")
+
+[node name="base" type="MeshInstance3D" parent="microscope/scope"]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 0.075, -0.19, 0)
+mesh = SubResource("CylinderMesh_ybs5p")
+
+[node name="thing1" type="MeshInstance3D" parent="microscope/scope/base"]
+transform = Transform3D(0.9396924, 0.34202006, 0, -0.34202006, 0.9396924, 0, 0, 0, 1, -0.06935835, -0.09150934, 0)
+mesh = SubResource("CylinderMesh_r31mc")
+
+[node name="thing2" type="MeshInstance3D" parent="microscope/scope/base"]
+transform = Transform3D(0.93969226, -0.34202006, 0, 0.32139364, 0.88302195, 0.3420201, -0.11697773, -0.3213937, 0.9396925, 0.053, -0.089, 0.075)
+mesh = SubResource("CylinderMesh_r31mc")
+
+[node name="thing3" type="MeshInstance3D" parent="microscope/scope/base"]
+transform = Transform3D(0.9396922, -0.34202003, 0, 0.32139367, 0.88302195, -0.3420201, 0.116977714, 0.3213937, 0.9396925, 0.053, -0.089, -0.075)
+mesh = SubResource("CylinderMesh_r31mc")
+
+[node name="pipe" type="MeshInstance3D" parent="microscope/scope"]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 0, -0.06, 0)
+mesh = SubResource("CylinderMesh_142wf")
+
+[node name="arm" type="MeshInstance3D" parent="microscope"]
+transform = Transform3D(-0.9659258, 0.25881913, 0, -0.25881913, -0.9659258, 0, 0, 0, 1, -0.40399686, 0.66038465, 0)
+mesh = SubResource("PrismMesh_knqqx")
+
+[node name="stem" type="MeshInstance3D" parent="microscope/arm"]
+transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, 0.2748938, 0.3398888, 0)
+mesh = SubResource("BoxMesh_r31mc")
+
+[node name="support" type="MeshInstance3D" parent="microscope/arm"]
+transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, 0.16307303, 0.6171851, 0)
+mesh = SubResource("PrismMesh_142wf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="microscope/arm"]
+transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, -0.1302349, 0.5374472, 0)
+mesh = SubResource("BoxMesh_u8bxx")
+
+[node name="knob" type="MeshInstance3D" parent="microscope/arm"]
+transform = Transform3D(-0.9659258, 1.0311417e-08, -0.25881913, 0.25881913, 3.848272e-08, -0.9659258, 0, -1, -4.371139e-08, 0.26265937, 0.31241453, -0.10921502)
+mesh = SubResource("CylinderMesh_u8bxx")
+skeleton = NodePath("../..")
+
+[node name="base" type="MeshInstance3D" parent="microscope"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36615807, -0.14621425, 0)
+mesh = SubResource("BoxMesh_142wf")
+
+[node name="triangle" type="MeshInstance3D" parent="microscope/base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0, 0)
+mesh = SubResource("PrismMesh_u8bxx")

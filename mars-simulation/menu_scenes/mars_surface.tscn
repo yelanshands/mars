@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2youmkwnmq1d"]
+[gd_scene load_steps=10 format=3 uid="uid://d2youmkwnmq1d"]
 
 [ext_resource type="Script" uid="uid://cd0uver4kv3s2" path="res://menu_scripts/mars_surface.gd" id="1_3mghn"]
 [ext_resource type="PackedScene" uid="uid://ds2pr1pji50a5" path="res://object_scenes/mars_floor.tscn" id="2_2xulb"]
 [ext_resource type="PackedScene" uid="uid://djpjli1okeb0n" path="res://object_scenes/user.tscn" id="3_y5or2"]
 [ext_resource type="PackedScene" uid="uid://dfh4kq3igr73s" path="res://object_scenes/dome.tscn" id="4_2xulb"]
 [ext_resource type="PackedScene" uid="uid://b8d4ot7cubsw4" path="res://object_scenes/watercan.tscn" id="5_2xulb"]
+[ext_resource type="PackedScene" uid="uid://dvbm8j8iy8m2e" path="res://object_scenes/duststorm.tscn" id="6_cggl1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y5or2"]
 sky_top_color = Color(0.61791843, 0.3788529, 0.28679493, 1)
@@ -38,3 +39,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10.336097)
 
 [node name="watercan" parent="." instance=ExtResource("5_2xulb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 9)
+
+[node name="duststorm" parent="." instance=ExtResource("6_cggl1")]

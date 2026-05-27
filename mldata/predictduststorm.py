@@ -15,12 +15,12 @@ def main():
         inputs = pd.DataFrame(args, columns=["ls", "min_temp", "max_temp", "pressure"])
         output = model.predict(inputs)
         
-        # print predicted output (storming or not storming)
-        print(bool(output[0]))
+        # exit with code corresponding to storming being true (1) or false (0)
+        sys.exit(1 if bool(output[0]) else 0)
 
     except Exception as e:
-        print(f"uh oh... Error: {str(e)}")
-        sys.exit(1)
+        print(f"uh oh... error: {str(e)}")
+        sys.exit(2)
 
 if __name__ == "__main__":
     main()
