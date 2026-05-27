@@ -16,36 +16,41 @@ func _physics_process(delta):
 	time += delta * bob_speed
 	position.y = def_y_pos + sin(time) * bob_amp
 	
-	if raycast.is_colliding():
-		var collider = raycast.get_collider().get_parent()
-		var mesh = collider.get_node_or_null("OUTLINE") 
-		if collider:
-			if mesh:
-				if mesh != last_hovered:
-					clear_outline()
-					set_outline(mesh, true)
-					last_hovered = mesh
+	if not globals.player.disabled:
+		if raycast.is_colliding():
+			var collider = raycast.get_collider().get_parent()
+			var mesh = collider.get_node_or_null("OUTLINE") 
+
+			if collider:
+				if mesh:
+					if mesh != last_hovered:
+						clear_outline()
+						set_outline(mesh, true)
+						last_hovered = mesh
 					
-				if not collider.holding:
-					if Input.is_action_just_pressed("right_click"):
-						if "grown" in collider:
-							if collider.grown:
-								pass
+					if ("holding" not in collider) or not collider.holding:
+						if Input.is_action_just_pressed("right_click"):
+							if "grown" in collider:
+								if collider.grown:
+									pass
+							elif collider.has_method("activate"):
+								collider.hovering = true
+								collider.activate()
+							else:
+								get_parent().holding = collider
+								collider.hold_delay = true
+								collider.holding = true
+								collider.freeze = true
+								collider.collision_layer = 0
+								collider.collision_mask = 0
+								raycast.get_collider().collision_layer = 0
+								collider.hovering = false
 						else:
-							get_parent().holding = collider
-							collider.hold_delay = true
-							collider.holding = true
-							collider.freeze = true
-							collider.collision_layer = 0
-							collider.collision_mask = 0
-							raycast.get_collider().collision_layer = 0
-							collider.hovering = false
-					else:
-						collider.hovering = true
-			else:
-				clear_outline()
-	else:
-		clear_outline()
+							collider.hovering = true
+				else:
+					clear_outline()
+		else:
+			clear_outline()
 
 func set_outline(mesh: MeshInstance3D, state: bool):
 	if mesh:

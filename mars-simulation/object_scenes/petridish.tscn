@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://cnvnxqhbjqb51"]
+
+[ext_resource type="Script" uid="uid://bhqnmbnnu8c7u" path="res://object_scripts/petridish.gd" id="1_3c2bu"]
+[ext_resource type="Shader" uid="uid://b0pdsaom45eq6" path="res://shaders/outline.gdshader" id="1_djw6h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r31mc"]
+render_priority = 0
+shader = ExtResource("1_djw6h")
+shader_parameter/outline_width = 0.01
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/hovering = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydje2"]
+next_pass = SubResource("ShaderMaterial_r31mc")
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.54509807)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufmsm"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.54509807)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1ilt"]
+transparency = 1
+albedo_color = Color(0.7250858, 0.6456929, 0.40566418, 0.78431374)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yxad7"]
+material = SubResource("StandardMaterial3D_c1ilt")
+top_radius = 0.095
+bottom_radius = 0.095
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfjuh"]
+next_pass = SubResource("ShaderMaterial_r31mc")
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.54509807)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k76wi"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.54509807)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qapqp"]
+height = 0.035
+radius = 0.105
+
+[node name="petridish" type="StaticBody3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 1, -4.371139e-08, 4.371139e-08, 4.371139e-08, 1, 1.9106855e-15, 0, 0, 0)
+script = ExtResource("1_3c2bu")
+
+[node name="base" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018509626, 0)
+radius = 0.1
+height = 0.025
+sides = 32
+material = SubResource("StandardMaterial3D_ydje2")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0025316477, 0)
+operation = 2
+radius = 0.095
+height = 0.02
+sides = 32
+material = SubResource("StandardMaterial3D_ufmsm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0028589964, 0)
+mesh = SubResource("CylinderMesh_yxad7")
+
+[node name="hinge" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.105)
+
+[node name="lid" type="CSGCylinder3D" parent="hinge"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.003, 0.105)
+radius = 0.105
+height = 0.015
+sides = 32
+material = SubResource("StandardMaterial3D_tfjuh")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="hinge/lid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0025316477, 0)
+operation = 2
+radius = 0.1
+height = 0.02
+sides = 32
+material = SubResource("StandardMaterial3D_k76wi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01364398, 0)
+shape = SubResource("CylinderShape3D_qapqp")
+
+[node name="streak" type="Label3D" parent="."]
+transform = Transform3D(-4.3711392e-08, 1, 8.742274e-08, -4.3711392e-08, -8.742278e-08, 1, 1, 4.3711392e-08, 4.3711413e-08, 0.08300422, -0.01525107, -0.0011566394)
+visible = false
+modulate = Color(0.4103613, 0.33171317, 0.06925635, 1)
+text = "///\\
+. .,,\\\\"
+font_size = 14
+outline_size = 0
+vertical_alignment = 0
+line_spacing = -10.0

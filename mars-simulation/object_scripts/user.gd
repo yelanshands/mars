@@ -1,7 +1,10 @@
 extends CharacterBody3D
+
 @onready var camera: Camera3D = $Camera3D
 @onready var arm: MeshInstance3D = $Camera3D/arm
 @onready var instructions: Label = $CanvasLayer/Instructions
+
+var disabled: bool = false
 
 var holding: Node3D
 var stopped_holding: bool = true
@@ -27,7 +30,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if event.is_action_pressed("left_click"):
+	if event.is_action_pressed("left_click") and not disabled:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(_delta: float) -> void:
@@ -42,43 +45,43 @@ func _process(_delta: float) -> void:
 		instructions.text = instructions.text.substr(instructions.text.find("\n") + 1, -1)
 
 func _physics_process(delta: float) -> void:
-	var input = Input.get_vector("strafe_left", "strafe_right", "move_forward", "move_back")
-	var movement_dir = (transform.basis * Vector3(input.x, 0, input.y)).normalized()
-	var on_floor: bool = is_on_floor()
-	
-	var lerp_vel = lerp(velocity, (-movement_dir * speed), friction if on_floor else air_resistance)
-	velocity = Vector3(lerp_vel.x, velocity.y, lerp_vel.z)
-	
-	if not on_floor:
-		velocity.y -= mars_gravity * delta
+	if not disabled:
+		var input = Input.get_vector("strafe_left", "strafe_right", "move_forward", "move_back")
+		var movement_dir = (transform.basis * Vector3(input.x, 0, input.y)).normalized()
+		var on_floor: bool = is_on_floor()
 		
-		if velocity.y > 0.0:
-			arm.rotation.z = lerp(arm.rotation.z, def_arm_rot + bob_amp*5, 0.1)
-		else:
-			arm.rotation.z = lerp(arm.rotation.z, def_arm_rot, 0.02)
-	else:
-		if Input.is_action_pressed("space"):
-			velocity.y = jump_height
+		var lerp_vel = lerp(velocity, (-movement_dir * speed), friction if on_floor else air_resistance)
+		velocity = Vector3(lerp_vel.x, velocity.y, lerp_vel.z)
+		
+		if not on_floor:
+			velocity.y -= mars_gravity * delta
 			
-		if Input.is_action_pressed("move_back"):
-			arm.rotation.z = lerp(arm.rotation.z, def_arm_rot - bob_amp*3, 0.1)
-		elif Input.is_action_pressed("move_forward"):
-			arm.rotation.z = lerp(arm.rotation.z, def_arm_rot + bob_amp*3, 0.1)
+			if velocity.y > 0.0:
+				arm.rotation.z = lerp(arm.rotation.z, def_arm_rot + bob_amp*5, 0.1)
+			else:
+				arm.rotation.z = lerp(arm.rotation.z, def_arm_rot, 0.02)
 		else:
-			arm.rotation.z = lerp(arm.rotation.z, def_arm_rot, 0.05)
-			
-	if abs(velocity.x) < 0.01:
-		velocity.x = 0.0
-	if abs(velocity.z) < 0.01:
-		velocity.z = 0.0
-	if abs(velocity.y) < 0.01:
-		velocity.y = 0.0
+			if Input.is_action_pressed("space"):
+				velocity.y = jump_height
+				
+			if Input.is_action_pressed("move_back"):
+				arm.rotation.z = lerp(arm.rotation.z, def_arm_rot - bob_amp*3, 0.1)
+			elif Input.is_action_pressed("move_forward"):
+				arm.rotation.z = lerp(arm.rotation.z, def_arm_rot + bob_amp*3, 0.1)
+			else:
+				arm.rotation.z = lerp(arm.rotation.z, def_arm_rot, 0.05)
+				
+		if abs(velocity.x) < 0.01:
+			velocity.x = 0.0
+		if abs(velocity.z) < 0.01:
+			velocity.z = 0.0
+		if abs(velocity.y) < 0.01:
+			velocity.y = 0.0
 
-	move_and_slide()
+		move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		rotation.y -= event.relative.x * cam_sens
-		camera.rotation.x = clamp(camera.rotation.x - event.relative.y * cam_sens, -1.0, 1.2)
-	
-	
+	if not disabled:
+		if event is InputEventMouseMotion:
+			rotation.y -= event.relative.x * cam_sens
+			camera.rotation.x = clamp(camera.rotation.x - event.relative.y * cam_sens, -1.0, 1.2)

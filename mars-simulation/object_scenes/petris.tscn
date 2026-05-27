@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://bko3bj4jaosbx"]
+
+[ext_resource type="Script" uid="uid://dpuwm5f3jfoqf" path="res://object_scripts/petris.gd" id="1_6ax1g"]
+[ext_resource type="PackedScene" uid="uid://cnvnxqhbjqb51" path="res://object_scenes/petridish.tscn" id="2_ydje2"]
+
+[node name="petris" type="Node3D"]
+script = ExtResource("1_6ax1g")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.029904127, 1.5051651, -0.8169886)
+
+[node name="instructions" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.0015662909, 0.15, -1.3854191)
+text = "CLICK the petri dishes to streak them!"
+font_size = 24
+
+[node name="perchl" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.33910543, 0.15, -1.1049361)
+text = "Perchlorates"
+font_size = 18
+outline_size = 4
+vertical_alignment = 0
+
+[node name="noperchl" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.0027146, 0.15, -1.1049361)
+text = "No Perchlorate"
+font_size = 18
+outline_size = 4
+vertical_alignment = 0
+
+[node name="label1" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1, 0.15, -0.527)
+text = "Micro-algae
+- Heavy metal
+reduction"
+font_size = 14
+outline_size = 4
+vertical_alignment = 0
+
+[node name="petridish" parent="label1" instance=ExtResource("2_ydje2")]
+transform = Transform3D(-4.3711385e-08, 4.3711392e-08, 1, 1, -4.371139e-08, 4.371139e-08, 4.3711392e-08, 1, -4.371139e-08, -0.00055503845, 0.22510237, 0.024999976)
+
+[node name="label2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.33, 0.15, -0.527)
+text = "Micro-algae
+- Heavy metal & 
+Perchlorate
+reduction"
+font_size = 14
+outline_size = 4
+vertical_alignment = 0
+
+[node name="petridish" parent="label2" instance=ExtResource("2_ydje2")]
+transform = Transform3D(-4.3711385e-08, 4.3711392e-08, 1, 1, -4.371139e-08, 4.371139e-08, 4.3711392e-08, 1, -4.371139e-08, -0.00055503845, 0.22510237, 0.024999976)
+
+[node name="label3" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.33, 0.15, -0.527)
+text = "Bacteria
+- Perchlorate
+reduction"
+font_size = 14
+outline_size = 4
+vertical_alignment = 0
+
+[node name="petridish" parent="label3" instance=ExtResource("2_ydje2")]
+transform = Transform3D(-4.3711385e-08, 4.3711392e-08, 1, 1, -4.371139e-08, 4.371139e-08, 4.3711392e-08, 1, -4.371139e-08, -0.00055503845, 0.22510237, 0.024999976)
+
+[node name="label4" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1, 0.15, -0.527)
+text = "Micro-algae
+- Heavy metal
+reduction"
+font_size = 14
+outline_size = 4
+vertical_alignment = 0
+
+[node name="petridish" parent="label4" instance=ExtResource("2_ydje2")]
+transform = Transform3D(-4.3711385e-08, 4.3711392e-08, 1, 1, -4.371139e-08, 4.371139e-08, 4.3711392e-08, 1, -4.371139e-08, -0.00055503845, 0.22510237, 0.024999976)

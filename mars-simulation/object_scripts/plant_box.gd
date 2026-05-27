@@ -11,7 +11,7 @@ var plants = []
 func _ready() -> void:
 	plants = [plant1, plant2, plant3]
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("right_click"):
 		if plants.any(func(plant): return plant.hovering) and plants.all(func(plant): return plant.grown):
 			if globals.player.holding:

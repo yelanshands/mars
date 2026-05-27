@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhunmuu0l3nfm"]
+
+[ext_resource type="Script" uid="uid://bvkk75xgkdsvk" path="res://object_scripts/plasmid.gd" id="1_fhmjp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhmjp"]
+albedo_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uegrl"]
+material = SubResource("StandardMaterial3D_fhmjp")
+size = Vector3(4, 0.25, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4want"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_al7kp"]
+
+[node name="plasmid" type="Node3D"]
+script = ExtResource("1_fhmjp")
+
+[node name="bg" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_uegrl")
+
+[node name="plasmid" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="host" type="CSGTorus3D" parent="plasmid"]
+transform = Transform3D(0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999997, -0.6140145, -0.099999994, -0.91303253)
+inner_radius = 0.15
+outer_radius = 0.2
+sides = 32
+material = SubResource("StandardMaterial3D_4want")
+
+[node name="cut" type="CSGBox3D" parent="plasmid/host"]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0.23901618, 0, 0)
+operation = 2
+size = Vector3(0.25, 0.1, 0.25)
+
+[node name="cutdna" type="CSGTorus3D" parent="plasmid"]
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, -0.6140145, -0.099999994, -0.91303253)
+inner_radius = 0.15
+outer_radius = 0.2
+sides = 32
+material = SubResource("StandardMaterial3D_al7kp")
+
+[node name="cut" type="CSGBox3D" parent="plasmid/cutdna"]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0.23901618, 0, 0)
+operation = 1
+size = Vector3(0.25, 0.1, 0.25)
+material = SubResource("StandardMaterial3D_al7kp")
+
+[node name="instructions" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.49239284, 0.15, -0.9299811)
+text = "CLICK to cut with
+Restriction
+Enzyme."
+font_size = 24
+
+[node name="label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.61264706, 0.15, -0.5272998)
+text = "Host Plasmid"
+font_size = 20
+outline_size = 6
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.2809677, -0.8169886)
