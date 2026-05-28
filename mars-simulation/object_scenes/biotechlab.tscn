@@ -1,12 +1,13 @@
-[gd_scene load_steps=67 format=4 uid="uid://bwqlaep0tiup8"]
+[gd_scene load_steps=61 format=4 uid="uid://bwqlaep0tiup8"]
 
 [ext_resource type="Script" uid="uid://qvqqxg0w6rwp" path="res://object_scripts/biotechtable.gd" id="1_knqqx"]
 [ext_resource type="Shader" uid="uid://b0pdsaom45eq6" path="res://shaders/outline.gdshader" id="2_ybs5p"]
 [ext_resource type="PackedScene" uid="uid://dhunmuu0l3nfm" path="res://object_scenes/plasmid.tscn" id="3_r31mc"]
+[ext_resource type="PackedScene" uid="uid://bko3bj4jaosbx" path="res://object_scenes/petris.tscn" id="4_142wf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dkqib"]
 radius = 1.5
-height = 4.0
+height = 3.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r31mc"]
 render_priority = 0
@@ -17,7 +18,7 @@ shader_parameter/hovering = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkqib"]
 next_pass = SubResource("ShaderMaterial_r31mc")
-albedo_color = Color(0.5132329, 0.51323295, 0.51323277, 1)
+albedo_color = Color(0.27387273, 0.27387276, 0.2738727, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dkqib"]
 material = SubResource("StandardMaterial3D_dkqib")
@@ -25,7 +26,7 @@ size = Vector3(2, 0.25, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_knqqx"]
 next_pass = SubResource("ShaderMaterial_r31mc")
-albedo_color = Color(0.35156274, 0.35156295, 0.35156286, 1)
+albedo_color = Color(0.12225223, 0.12225223, 0.12225223, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_knqqx"]
 material = SubResource("StandardMaterial3D_knqqx")
@@ -278,38 +279,6 @@ radial_segments = 8
 height = 0.37
 radius = 0.03
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3crep"]
-next_pass = SubResource("ShaderMaterial_r31mc")
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.54509807)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ew23r"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.54509807)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1ilt"]
-transparency = 1
-albedo_color = Color(0.7250858, 0.6456929, 0.40566418, 0.78431374)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_mg1uq"]
-material = SubResource("StandardMaterial3D_c1ilt")
-top_radius = 0.095
-bottom_radius = 0.095
-height = 0.01
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hynu2"]
-next_pass = SubResource("ShaderMaterial_r31mc")
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.54509807)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6h42w"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.54509807)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_knqqx"]
-height = 0.035
-radius = 0.105
-
 [node name="biotechlab" type="Node3D"]
 
 [node name="table" type="StaticBody3D" parent="."]
@@ -328,7 +297,7 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="table/hover"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3349011, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7855209, 0)
 shape = SubResource("CapsuleShape3D_dkqib")
 
 [node name="OUTLINE" type="MeshInstance3D" parent="table"]
@@ -372,7 +341,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 shape = SubResource("BoxShape3D_dkqib")
 
 [node name="microscope" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022654533, 1.4953793, 0.45168984)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19733858, 1.4953793, 0.45168984)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="microscope"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.189, 0.53, 0)
@@ -476,7 +445,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0, 0)
 mesh = SubResource("PrismMesh_u8bxx")
 
 [node name="tubes" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.397, 1.425, -0.424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5306895, 1.425, -0.27323273)
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="tubes"]
 mesh = SubResource("ArrayMesh_oyhmp")
@@ -502,7 +471,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.024819136, 0)
 shape = SubResource("BoxShape3D_ybs5p")
 
 [node name="pipette" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.01757757, -0.865847, -0.5, 0.999794, -0.020296829, 0, -0.010148414, -0.499897, 0.8660254, 0.22085041, 1.2785655, -0.60497504)
+transform = Transform3D(-0.01757757, -0.865847, -0.5, 0.999794, -0.020296829, 0, -0.010148414, -0.499897, 0.8660254, -0.28734228, 1.2785655, -0.73171103)
 
 [node name="tube" type="MeshInstance3D" parent="pipette"]
 mesh = SubResource("CylinderMesh_40l77")
@@ -538,171 +507,8 @@ mesh = SubResource("CylinderMesh_hynu2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049183965, 0)
 shape = SubResource("CylinderShape3D_dkqib")
 
-[node name="petris" type="Node3D" parent="."]
-
-[node name="petridish" type="StaticBody3D" parent="petris"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63076854, 1.2812341, 0.5411825)
-
-[node name="base" type="CSGCylinder3D" parent="petris/petridish"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018509626, 0)
-radius = 0.1
-height = 0.025
-sides = 32
-material = SubResource("StandardMaterial3D_3crep")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="petris/petridish/base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0025316477, 0)
-operation = 2
-radius = 0.095
-height = 0.02
-sides = 32
-material = SubResource("StandardMaterial3D_ew23r")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="petris/petridish/base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0028589964, 0)
-mesh = SubResource("CylinderMesh_mg1uq")
-
-[node name="lid" type="CSGCylinder3D" parent="petris/petridish"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.0029847622, 0)
-radius = 0.105
-height = 0.015
-sides = 32
-material = SubResource("StandardMaterial3D_hynu2")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="petris/petridish/lid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0025316477, 0)
-operation = 2
-radius = 0.1
-height = 0.02
-sides = 32
-material = SubResource("StandardMaterial3D_6h42w")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="petris/petridish"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01364398, 0)
-shape = SubResource("CylinderShape3D_knqqx")
-
-[node name="petridish2" type="StaticBody3D" parent="petris"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63076854, 1.2812341, 0.29970878)
-
-[node name="base" type="CSGCylinder3D" parent="petris/petridish2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018509626, 0)
-radius = 0.1
-height = 0.025
-sides = 32
-material = SubResource("StandardMaterial3D_3crep")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="petris/petridish2/base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0025316477, 0)
-operation = 2
-radius = 0.095
-height = 0.02
-sides = 32
-material = SubResource("StandardMaterial3D_ew23r")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="petris/petridish2/base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0028589964, 0)
-mesh = SubResource("CylinderMesh_mg1uq")
-
-[node name="lid" type="CSGCylinder3D" parent="petris/petridish2"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.0029847622, 0)
-radius = 0.105
-height = 0.015
-sides = 32
-material = SubResource("StandardMaterial3D_hynu2")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="petris/petridish2/lid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0025316477, 0)
-operation = 2
-radius = 0.1
-height = 0.02
-sides = 32
-material = SubResource("StandardMaterial3D_6h42w")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="petris/petridish2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01364398, 0)
-shape = SubResource("CylinderShape3D_knqqx")
-
-[node name="petridish3" type="StaticBody3D" parent="petris"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63076854, 1.2812341, 0.058719397)
-
-[node name="base" type="CSGCylinder3D" parent="petris/petridish3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018509626, 0)
-radius = 0.1
-height = 0.025
-sides = 32
-material = SubResource("StandardMaterial3D_3crep")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="petris/petridish3/base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0025316477, 0)
-operation = 2
-radius = 0.095
-height = 0.02
-sides = 32
-material = SubResource("StandardMaterial3D_ew23r")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="petris/petridish3/base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0028589964, 0)
-mesh = SubResource("CylinderMesh_mg1uq")
-
-[node name="lid" type="CSGCylinder3D" parent="petris/petridish3"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.0029847622, 0)
-radius = 0.105
-height = 0.015
-sides = 32
-material = SubResource("StandardMaterial3D_hynu2")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="petris/petridish3/lid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0025316477, 0)
-operation = 2
-radius = 0.1
-height = 0.02
-sides = 32
-material = SubResource("StandardMaterial3D_6h42w")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="petris/petridish3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01364398, 0)
-shape = SubResource("CylinderShape3D_knqqx")
-
-[node name="petridish4" type="StaticBody3D" parent="petris"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63076854, 1.2812341, -0.18202776)
-
-[node name="base" type="CSGCylinder3D" parent="petris/petridish4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018509626, 0)
-radius = 0.1
-height = 0.025
-sides = 32
-material = SubResource("StandardMaterial3D_3crep")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="petris/petridish4/base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0025316477, 0)
-operation = 2
-radius = 0.095
-height = 0.02
-sides = 32
-material = SubResource("StandardMaterial3D_ew23r")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="petris/petridish4/base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0028589964, 0)
-mesh = SubResource("CylinderMesh_mg1uq")
-
-[node name="lid" type="CSGCylinder3D" parent="petris/petridish4"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.0029847622, 0)
-radius = 0.105
-height = 0.015
-sides = 32
-material = SubResource("StandardMaterial3D_hynu2")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="petris/petridish4/lid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0025316477, 0)
-operation = 2
-radius = 0.1
-height = 0.02
-sides = 32
-material = SubResource("StandardMaterial3D_6h42w")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="petris/petridish4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01364398, 0)
-shape = SubResource("CylinderShape3D_knqqx")
-
 [node name="plasmid" parent="." instance=ExtResource("3_r31mc")]
 transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -0.14597091, 1.6828761, 0.46102428)
+
+[node name="petris" parent="." instance=ExtResource("4_142wf")]
+transform = Transform3D(4.5298744e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, 4.5298744e-08, 0.98231447, 1.1643951, -0.004517913)

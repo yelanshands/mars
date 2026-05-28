@@ -1,8 +1,12 @@
 extends RigidBody3D
 
 @onready var hint_text: Label3D = $hint_text
+@onready var capacity: Label3D = $capacity
 
 var item_name: String = "Watercan"
+
+var max: float = 5.0
+var water: float = 0.0
 
 var holding: bool = false
 var hold_delay: bool = false
@@ -13,6 +17,11 @@ var max_rot: float = PI/4
 var pouring: bool = false
 
 func _physics_process(_delta: float) -> void:
+	if (hovering or globals.player.holding == self) and not capacity.visible:
+		capacity.visible = true
+	elif not (hovering or globals.player.holding == self) and capacity.visible:
+		capacity.visible = false
+		
 	if hovering and not hint_text.visible:
 		hint_text.visible = true
 	elif not hovering and hint_text.visible:
@@ -28,6 +37,7 @@ func _physics_process(_delta: float) -> void:
 		if tight_hold:
 			global_position = hand_pos
 			if pouring:
+				capacity.text = "[" + "/".repeat(ceil(water)) + "_".repeat(int(max)-ceil(water)) + "]"
 				if global_rotation.z >= max_rot * 0.99:
 					new_z_rot = max_rot
 					pouring = false
@@ -48,8 +58,12 @@ func _physics_process(_delta: float) -> void:
 		else:
 			if Input.is_action_pressed("left_click"):
 				if tight_hold:
-					pouring = true
-					globals.player.using = true
+					if water > 0.0:
+						pouring = true
+						globals.player.using = true
+					else:
+						capacity.text = "Refill @ Biotech Lab"
+						capacity.font_size = 24
 			else:
 				pouring = false
 				globals.player.using = false

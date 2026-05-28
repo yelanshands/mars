@@ -1,9 +1,11 @@
 extends Node3D
 
-@onready var plasmid_camera: Camera3D = $Camera3D
+@onready var camera: Camera3D = $Camera3D
 @onready var cutdna: CSGTorus3D = $plasmid/cutdna
 @onready var instructions: Label3D = $instructions
 @onready var label: Label3D = $label
+@onready var biotechtable: StaticBody3D = $"../table"
+@onready var anotherlabel: Label3D = $anotherlabel
 
 var started: bool = false
 
@@ -22,6 +24,13 @@ func _ready() -> void:
 	cut_pos = def_pos.z - cut_diff
 
 func start() -> void:
+	instructions.visible = true
+	label.visible = true
+	anotherlabel.visible = true
+	started = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func reset() -> void:
 	cutting = false
 	cut = false
 	combining = false
@@ -29,25 +38,32 @@ func start() -> void:
 	instructions.font_size = 24
 	instructions.text = "CLICK to cut with\nRestriction\nEnzyme."
 	cutdna.material.albedo_color = Color(1, 1, 1)
-	started = true
 	cutdna.position = def_pos
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(_delta: float) -> void:
 	if started:
 		var mouse_pos = get_viewport().get_mouse_position()
-		if Input.is_action_just_pressed("left_click") and not cutting and not combining:
-			if plasmid_center.distance_to(mouse_pos) <= radius:
-				if cut:
-					combining = true
-				else:
-					cutting = true
-					instructions.text = "CLICK to anneal\nnew genes."
+		if Input.is_action_just_pressed("left_click"):
+			if not cutting and not combining:
+				if plasmid_center.distance_to(mouse_pos) <= radius:
+					if cut:
+						combining = true
+					else:
+						cutting = true
+			if label.text == "\nRecombinant\nPlasmid DNA":
+				started = false
+				instructions.visible = false
+				label.visible = false
+				anotherlabel.visible = false
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+				biotechtable.current = biotechtable.petris
+				biotechtable.activate()
 
 		if cutting:
 			cutdna.position.z = lerp(cutdna.position.z, cut_pos, 0.05)
 			if cutdna.position.z <= cut_pos + 0.01:
 				cutdna.position.z = cut_pos
+				instructions.text = "CLICK to anneal\nthe new gene."
 				cutting = false
 				cut = true
 				cutdna.position.x += cut_diff
@@ -57,7 +73,7 @@ func _physics_process(_delta: float) -> void:
 			if cutdna.position.distance_to(def_pos) <= 0.001:
 				cutdna.position = def_pos
 				combining = false
-				label.text = "Recombinant\nPlasmid DNA"
+				label.text = "\nRecombinant\nPlasmid DNA"
 				instructions.font_size = 18
-				instructions.text = "Good Work!\nYou've added a\nPerclorate reducing\ngene to the bacteria!\n\nCLICK to go next."
+				instructions.text = "\nYou've added a\nPerclorate reducing\ngene to the bacteria!\n\nCLICK to go next."
 				

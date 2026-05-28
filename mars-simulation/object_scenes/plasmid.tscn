@@ -1,13 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhunmuu0l3nfm"]
+[gd_scene load_steps=4 format=3 uid="uid://dhunmuu0l3nfm"]
 
 [ext_resource type="Script" uid="uid://bvkk75xgkdsvk" path="res://object_scripts/plasmid.gd" id="1_fhmjp"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhmjp"]
-albedo_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_uegrl"]
-material = SubResource("StandardMaterial3D_fhmjp")
-size = Vector3(4, 0.25, 4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4want"]
 
@@ -15,10 +8,6 @@ size = Vector3(4, 0.25, 4)
 
 [node name="plasmid" type="Node3D"]
 script = ExtResource("1_fhmjp")
-
-[node name="bg" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("BoxMesh_uegrl")
 
 [node name="plasmid" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -49,14 +38,26 @@ size = Vector3(0.25, 0.1, 0.25)
 material = SubResource("StandardMaterial3D_al7kp")
 
 [node name="instructions" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.49239284, 0.15, -0.9299811)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.49239284, 0.15, -0.86326534)
+visible = false
 text = "CLICK to cut with
 Restriction
 Enzyme."
 font_size = 24
 
+[node name="anotherlabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.9870509, 0.15, -1.3837793)
+visible = false
+text = "Crops will need a special type of water to thrive here on Mars! 
+We'll have to add some micro-algae to reduce heavy metals
+and a special gene to reduce Perchlorate."
+font_size = 12
+outline_size = 6
+horizontal_alignment = 0
+
 [node name="label" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.61264706, 0.15, -0.5272998)
+visible = false
 text = "Host Plasmid"
 font_size = 20
 outline_size = 6

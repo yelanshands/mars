@@ -85,3 +85,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventMouseMotion:
 			rotation.y -= event.relative.x * cam_sens
 			camera.rotation.x = clamp(camera.rotation.x - event.relative.y * cam_sens, -1.0, 1.2)
+	else:
+		get_viewport().set_input_as_handled()

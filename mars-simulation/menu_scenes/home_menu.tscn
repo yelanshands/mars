@@ -31,10 +31,10 @@ environment = SubResource("Environment_84g7t")
 
 [node name="dome" parent="." instance=ExtResource("2_84g7t")]
 
-[node name="plantboxlidhinge" parent="dome/plant box" index="4"]
+[node name="hinge" parent="dome" index="11"]
 script = null
 
-[node name="hinge" parent="dome" index="2"]
+[node name="table" parent="dome/biotechlab" index="0"]
 script = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -61,4 +61,4 @@ text = " Start "
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
 
 [editable path="dome"]
-[editable path="dome/plant box"]
+[editable path="dome/biotechlab"]
