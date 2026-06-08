@@ -5,7 +5,7 @@ extends RigidBody3D
 
 var item_name: String = "Watercan"
 
-var max: float = 5.0
+var max_cap: float = 5.0
 var water: float = 0.0
 
 var holding: bool = false
@@ -37,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 		if tight_hold:
 			global_position = hand_pos
 			if pouring:
-				capacity.text = "[" + "/".repeat(ceil(water)) + "_".repeat(int(max)-ceil(water)) + "]"
+				capacity.text = "[" + "/".repeat(ceil(water)) + "_".repeat(int(max_cap)-ceil(water)) + "]"
 				if global_rotation.z >= max_rot * 0.99:
 					new_z_rot = max_rot
 					pouring = false

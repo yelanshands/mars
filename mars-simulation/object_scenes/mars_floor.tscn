@@ -1,19 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds2pr1pji50a5"]
+[gd_scene load_steps=5 format=3 uid="uid://ds2pr1pji50a5"]
 
 [ext_resource type="Material" uid="uid://dtxhj44deljv3" path="res://materials/mars_surface.tres" id="1_fn7gw"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_3mghn"]
+[sub_resource type="BoxMesh" id="BoxMesh_5relb"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_76olo"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fn7gw"]
+size = Vector3(300, 30, 10)
+
 [node name="floor" type="StaticBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, 0, 0)
 material_override = ExtResource("1_fn7gw")
-mesh = SubResource("BoxMesh_3mghn")
+mesh = SubResource("BoxMesh_5relb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_76olo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.58522, -136.1179)
+shape = SubResource("BoxShape3D_fn7gw")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.58522, 134.76859)
+shape = SubResource("BoxShape3D_fn7gw")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -133.87347, 9.58522, 1.6871719)
+shape = SubResource("BoxShape3D_fn7gw")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 131.4972, 9.58522, 1.6871719)
+shape = SubResource("BoxShape3D_fn7gw")

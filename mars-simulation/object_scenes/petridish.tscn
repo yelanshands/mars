@@ -90,7 +90,7 @@ shape = SubResource("CylinderShape3D_qapqp")
 [node name="streak" type="Label3D" parent="."]
 transform = Transform3D(-4.3711392e-08, 1, 8.742274e-08, -4.3711392e-08, -8.742278e-08, 1, 1, 4.3711392e-08, 4.3711413e-08, 0.08300422, -0.01525107, -0.0011566394)
 visible = false
-modulate = Color(0.7823695, 0.72604305, 0.5751103, 1)
+modulate = Color(0.6853219, 0.5636017, 0.38953918, 1)
 text = "///\\
 . .,,\\\\"
 font_size = 14

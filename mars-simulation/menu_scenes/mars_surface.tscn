@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2youmkwnmq1d"]
+[gd_scene load_steps=13 format=3 uid="uid://d2youmkwnmq1d"]
 
 [ext_resource type="Script" uid="uid://cd0uver4kv3s2" path="res://menu_scripts/mars_surface.gd" id="1_3mghn"]
 [ext_resource type="PackedScene" uid="uid://ds2pr1pji50a5" path="res://object_scenes/mars_floor.tscn" id="2_2xulb"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dfh4kq3igr73s" path="res://object_scenes/dome.tscn" id="4_2xulb"]
 [ext_resource type="PackedScene" uid="uid://b8d4ot7cubsw4" path="res://object_scenes/watercan.tscn" id="5_2xulb"]
 [ext_resource type="PackedScene" uid="uid://dvbm8j8iy8m2e" path="res://object_scenes/duststorm.tscn" id="6_cggl1"]
+[ext_resource type="PackedScene" uid="uid://cbocubxgj3gkq" path="res://object_scenes/thebigscreen.tscn" id="7_7psel"]
+[ext_resource type="PackedScene" uid="uid://ckimc06adj6mt" path="res://object_scenes/solar_panel.tscn" id="8_rox7n"]
+[ext_resource type="Script" uid="uid://cubhoqsejxnwc" path="res://object_scripts/solarpanels.gd" id="8_yvvpx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y5or2"]
 sky_top_color = Color(0.61791843, 0.3788529, 0.28679493, 1)
@@ -19,12 +22,15 @@ sky_material = SubResource("ProceduralSkyMaterial_y5or2")
 background_mode = 2
 sky = SubResource("Sky_2xulb")
 tonemap_mode = 2
+fog_light_color = Color(0.52252877, 0.2676141, 0.2220225, 1)
+volumetric_fog_albedo = Color(0.6674046, 0.41392475, 0.3530477, 1)
 
 [node name="mars_surface" type="Node3D"]
 script = ExtResource("1_3mghn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.64326006, 0.23665068, 0.26333523, 1)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -33,7 +39,7 @@ environment = SubResource("Environment_2xulb")
 [node name="floor" parent="." instance=ExtResource("2_2xulb")]
 
 [node name="user" parent="." instance=ExtResource("3_y5or2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10.336097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5.336097)
 
 [node name="dome" parent="." instance=ExtResource("4_2xulb")]
 
@@ -41,3 +47,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10.336097)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 9)
 
 [node name="duststorm" parent="." instance=ExtResource("6_cggl1")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="sols" type="Label" parent="CanvasLayer"]
+offset_left = 65.0
+offset_top = 55.0
+offset_right = 138.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 32
+text = "Sol 0"
+
+[node name="alerts" type="Label" parent="CanvasLayer"]
+offset_left = 67.0
+offset_top = 107.0
+offset_right = 275.0
+offset_bottom = 135.0
+theme_override_font_sizes/font_size = 20
+text = "Weather Alerts: None"
+
+[node name="plantcounter" type="Label" parent="CanvasLayer"]
+offset_left = 68.0
+offset_top = 147.0
+offset_right = 182.0
+offset_bottom = 170.0
+text = "plants eaten: 0"
+
+[node name="Sols" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="thebigscreen" parent="." instance=ExtResource("7_7psel")]
+transform = Transform3D(-0.6, 0, -9.059749e-08, 0, 0.6, 0, 9.059749e-08, 0, -0.6, 0, 0.7976053, 19.78935)
+
+[node name="solarpanels" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95824623, 15.07435, 13.34124)
+script = ExtResource("8_yvvpx")
+
+[node name="solar panel1" parent="solarpanels" instance=ExtResource("8_rox7n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.04175377, 0.07435036, 0.34123993)
+
+[node name="solar panel2" parent="solarpanels" instance=ExtResource("8_rox7n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.0417538, 0.07435036, 0.34123993)
+
+[node name="solar panel3" parent="solarpanels" instance=ExtResource("8_rox7n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.04175377, 0.07435036, -1.9072571)
+
+[node name="solar panel4" parent="solarpanels" instance=ExtResource("8_rox7n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.0417538, 0.07435036, -1.9072571)
+
+[node name="Camera3D" type="Camera3D" parent="solarpanels"]
+transform = Transform3D(1, 0, 0, 0, 0.8660253, 0.5, 0, -0.5, 0.8660253, -1, 2, 3)
+
+[connection signal="timeout" from="Sols" to="." method="_on_sols_timeout"]

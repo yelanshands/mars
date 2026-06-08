@@ -9,8 +9,8 @@ extends Node3D
 
 var started: bool = false
 
-var plasmid_center: Vector2 = Vector2(348.0, 290.0)
-var radius: float = 90.0
+var plasmid_center: Vector2 = Vector2(614.0, 427.0) #(348.0, 290.0)
+var radius: float = 150.0 #90.0
 
 var cutting: bool = false
 var cut: bool = false
@@ -45,7 +45,7 @@ func _physics_process(_delta: float) -> void:
 		var mouse_pos = get_viewport().get_mouse_position()
 		if Input.is_action_just_pressed("left_click"):
 			if not cutting and not combining:
-				if plasmid_center.distance_to(mouse_pos) <= radius:
+				if plasmid_center.distance_to(mouse_pos)<= radius:
 					if cut:
 						combining = true
 					else:

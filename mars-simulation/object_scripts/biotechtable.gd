@@ -53,7 +53,7 @@ func activate() -> void:
 	else:
 		globals.player.visible = true
 		watercan.visible = true
-		watercan.water = watercan.max
+		watercan.water = watercan.max_cap
 		watercan.capacity.text = "[/////]"
 		watercan.capacity.font_size = 28
 		current.camera.global_position = petris.camera.global_position

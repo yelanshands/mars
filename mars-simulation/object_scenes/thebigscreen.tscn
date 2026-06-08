@@ -1,0 +1,301 @@
+[gd_scene load_steps=23 format=3 uid="uid://cbocubxgj3gkq"]
+
+[ext_resource type="Script" uid="uid://kkena2s2dvkw" path="res://object_scripts/thebigscreen.gd" id="1_l0bus"]
+[ext_resource type="Shader" uid="uid://b0pdsaom45eq6" path="res://shaders/outline.gdshader" id="2_i43sf"]
+[ext_resource type="Script" uid="uid://45fm16j5dwig" path="res://object_scripts/keyboardmouse.gd" id="2_nr4ub"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5dci"]
+render_priority = 0
+shader = ExtResource("2_i43sf")
+shader_parameter/outline_width = 0.01
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/hovering = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0bus"]
+next_pass = SubResource("ShaderMaterial_w5dci")
+albedo_color = Color(0.043039158, 0.04303915, 0.04303915, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjpdq"]
+albedo_color = Color(0.12955844, 0.12955847, 0.12955844, 1)
+metallic = 0.65
+metallic_specular = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_rjpdq"]
+material = SubResource("StandardMaterial3D_rjpdq")
+size = Vector3(4.6, 2.6, 0.225)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rjpdq"]
+size = Vector3(5, 3, 0.35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l0bus"]
+material = SubResource("StandardMaterial3D_l0bus")
+size = Vector3(1.5, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nr4ub"]
+material = SubResource("StandardMaterial3D_l0bus")
+size = Vector3(2.5, 0.05, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sot1u"]
+render_priority = 0
+shader = ExtResource("2_i43sf")
+shader_parameter/outline_width = 0.01
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/hovering = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i43sf"]
+next_pass = SubResource("ShaderMaterial_sot1u")
+albedo_color = Color(0.15127608, 0.15127608, 0.15127605, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_w5dci"]
+material = SubResource("StandardMaterial3D_i43sf")
+left_to_right = 1.0
+size = Vector3(0.9, 0.1, 2.5)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sot1u"]
+material = SubResource("StandardMaterial3D_l0bus")
+radius = 0.15
+height = 0.45
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_buwyt"]
+render_priority = 0
+shader = ExtResource("2_i43sf")
+shader_parameter/outline_width = 0.01
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/hovering = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_buwyt"]
+next_pass = SubResource("ShaderMaterial_buwyt")
+albedo_color = Color(0.6872149, 0.68721503, 0.6872149, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5ye0y"]
+material = SubResource("StandardMaterial3D_buwyt")
+radius = 0.02
+height = 0.08
+
+[sub_resource type="BoxMesh" id="BoxMesh_i43sf"]
+material = SubResource("StandardMaterial3D_i43sf")
+size = Vector3(0.3, 0.075, 0.8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ye0y"]
+render_priority = 0
+shader = ExtResource("2_i43sf")
+shader_parameter/outline_width = 0.01
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/hovering = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w5dci"]
+next_pass = SubResource("ShaderMaterial_5ye0y")
+albedo_color = Color(0.7101553, 0.16499192, 0.27219164, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sot1u"]
+material = SubResource("StandardMaterial3D_w5dci")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.05
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l0bus"]
+radius = 1.5
+height = 5.0
+
+[node name="thebigscreen" type="Node3D"]
+script = ExtResource("1_l0bus")
+
+[node name="center" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1703763, -0.8551378)
+
+[node name="screen" type="CSGBox3D" parent="center"]
+size = Vector3(5, 3, 0.35)
+material = SubResource("StandardMaterial3D_l0bus")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="center/screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+operation = 2
+size = Vector3(4.6, 2.6, 0.25)
+material = SubResource("StandardMaterial3D_l0bus")
+
+[node name="screen" type="MeshInstance3D" parent="center/screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.024549961)
+mesh = SubResource("BoxMesh_rjpdq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="center"]
+shape = SubResource("BoxShape3D_rjpdq")
+
+[node name="back" type="MeshInstance3D" parent="center"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1768312, -0.57277274)
+mesh = SubResource("BoxMesh_l0bus")
+
+[node name="logo" type="Label3D" parent="center"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62740314, 1.0769329, 0.088299155)
+modulate = Color(0.30609235, 0.3365072, 0.8386227, 1)
+text = "Stardust Corporation"
+font_size = 30
+horizontal_alignment = 0
+
+[node name="titlething" type="Label3D" parent="center"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.096695, 0.9413223, 0.088299155)
+modulate = Color(0.68267614, 0.2232787, 0.36301264, 1)
+text = "WEATHER Forecast"
+font_size = 48
+horizontal_alignment = 0
+
+[node name="things" type="Node3D" parent="center"]
+
+[node name="thing1" type="Label3D" parent="center/things"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.17, 0.088)
+modulate = Color(0.61745477, 0.61745477, 0.6174547, 1)
+text = "Sol ---
+Pressure: ---
+Low: ---
+High: ---
+"
+font_size = 26
+line_spacing = -15.0
+
+[node name="thing2" type="Label3D" parent="center/things"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.17, 0.088)
+modulate = Color(0.61745477, 0.61745477, 0.6174547, 1)
+text = "Sol 1
+Pressure: 0.0
+Low: 0.0
+High: 0.0
+"
+font_size = 26
+line_spacing = -15.0
+
+[node name="centerthing" type="Label3D" parent="center/things"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14766407, 0.088)
+text = "Sol 0
+Atm. Pressure: 0.0
+Low Temp: 0.0
+High Temp: 0.0"
+line_spacing = -15.0
+
+[node name="left" type="StaticBody3D" parent="."]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -4.9205704, 4.1703763, 0.4526775)
+
+[node name="screen" type="CSGBox3D" parent="left"]
+size = Vector3(5, 3, 0.35)
+material = SubResource("StandardMaterial3D_l0bus")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="left/screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+operation = 2
+size = Vector3(4.6, 2.6, 0.25)
+material = SubResource("StandardMaterial3D_l0bus")
+
+[node name="screen" type="MeshInstance3D" parent="left/screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.024549961)
+mesh = SubResource("BoxMesh_rjpdq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="left"]
+shape = SubResource("BoxShape3D_rjpdq")
+
+[node name="back" type="MeshInstance3D" parent="left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1768312, -0.57277274)
+mesh = SubResource("BoxMesh_l0bus")
+
+[node name="right" type="StaticBody3D" parent="."]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 4.921, 4.1703763, 0.45286214)
+
+[node name="screen" type="CSGBox3D" parent="right"]
+size = Vector3(5, 3, 0.35)
+material = SubResource("StandardMaterial3D_l0bus")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="right/screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+operation = 2
+size = Vector3(4.6, 2.6, 0.25)
+material = SubResource("StandardMaterial3D_l0bus")
+
+[node name="screen" type="MeshInstance3D" parent="right/screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.024549961)
+mesh = SubResource("BoxMesh_rjpdq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="right"]
+shape = SubResource("BoxShape3D_rjpdq")
+
+[node name="back" type="MeshInstance3D" parent="right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1768312, -0.57277274)
+mesh = SubResource("BoxMesh_l0bus")
+
+[node name="logo" type="Label3D" parent="right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62740314, 1.0769329, 0.088299155)
+modulate = Color(0.30609235, 0.3365072, 0.8386227, 1)
+text = "Stardust Corporation"
+font_size = 30
+horizontal_alignment = 0
+
+[node name="warning" type="Label3D" parent="right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06270027, 0.08800006)
+text = "No Weather Alerts.
+Stay tuned!"
+font_size = 50
+
+[node name="desk" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+use_collision = true
+size = Vector3(6, 1.25, 2.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="desk"]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -4.921, 0, 1.308)
+size = Vector3(5.9, 1.25, 2.5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="desk"]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 4.921, 0, 1.308)
+size = Vector3(5.9, 1.25, 2.5)
+
+[node name="back" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1.2448578, -1.7679797)
+use_collision = true
+size = Vector3(6, 1.25, 2.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="back"]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -4.921, 0, 1.308)
+size = Vector3(5.9, 1.25, 2.5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="back"]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 4.921, 0, 1.308)
+size = Vector3(5.9, 1.25, 2.5)
+
+[node name="keyboardmouse" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.275, 0.23603714)
+script = ExtResource("2_nr4ub")
+
+[node name="OUTLINE" type="MeshInstance3D" parent="keyboardmouse"]
+mesh = SubResource("BoxMesh_nr4ub")
+
+[node name="top" type="MeshInstance3D" parent="keyboardmouse/OUTLINE"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.07500005, -0.049088806)
+mesh = SubResource("PrismMesh_w5dci")
+
+[node name="mouse" type="MeshInstance3D" parent="keyboardmouse"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.6930518, -0.046033382, 0.5122491)
+mesh = SubResource("CapsuleMesh_sot1u")
+
+[node name="scroll" type="MeshInstance3D" parent="keyboardmouse/mouse"]
+transform = Transform3D(1, 0, 0, 0, 0.983382, 0.18154907, 0, -0.18154907, 0.983382, 0, 0.11351961, 0.13537467)
+mesh = SubResource("CapsuleMesh_5ye0y")
+
+[node name="remote" type="MeshInstance3D" parent="keyboardmouse"]
+transform = Transform3D(0.95260835, 0, -0.30419934, 0, 1, 0, 0.30419934, 0, 0.95260835, -1.9277847, 0.00999999, 0.25413632)
+mesh = SubResource("BoxMesh_i43sf")
+
+[node name="button" type="MeshInstance3D" parent="keyboardmouse/remote"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.084314466, 0.024090052, -0.33095855)
+mesh = SubResource("CylinderMesh_sot1u")
+
+[node name="hover" type="Area3D" parent="keyboardmouse"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="keyboardmouse/hover"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.047557533, 0.3983326, 0.26255822)
+shape = SubResource("CapsuleShape3D_l0bus")
+
+[node name="hint_text" type="Label3D" parent="keyboardmouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8098315, 0.3083291)
+visible = false
+billboard = 2
+text = "View Solar Panels [RMB]"
+font_size = 48

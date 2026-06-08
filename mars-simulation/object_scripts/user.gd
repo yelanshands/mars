@@ -5,7 +5,6 @@ extends CharacterBody3D
 @onready var instructions: Label = $CanvasLayer/Instructions
 
 var disabled: bool = false
-
 var holding: Node3D
 var stopped_holding: bool = true
 var using: bool = false

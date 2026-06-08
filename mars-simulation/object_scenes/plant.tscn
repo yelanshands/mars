@@ -61,3 +61,10 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hover"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("CapsuleShape3D_o0tlq")
+
+[node name="hint_text" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.498, 0.2436516)
+visible = false
+billboard = 2
+text = "Eat [RMB]"
+font_size = 16

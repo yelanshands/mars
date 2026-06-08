@@ -8,9 +8,10 @@ extends Node3D
 
 var started: bool = false
 
-var z_pos: float = 345.0
-var petri_centers = [250.0, 460.0, 670.0, 880.0]
-var radius: float = 50.0
+var z_pos: float = 510.0 #345.0
+#var petri_centers = [250.0, 460.0, 670.0, 880.0]
+var petri_centers = [470.0, 785.0, 1095.0, 1410.0]
+var radius: float = 70.0 #50.0
 
 var growth_y: float = 0.041
 var growing: bool = false
@@ -42,6 +43,7 @@ func _physics_process(_delta: float) -> void:
 	if started:
 		var mouse_pos = get_viewport().get_mouse_position()
 		if Input.is_action_just_pressed("left_click"): 
+			print(mouse_pos)
 			if instructions.font_size == 17:
 				for index in range(0, 4):
 					if mouse_pos.distance_to(Vector2(petri_centers[index], z_pos)) <= radius:

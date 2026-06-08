@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvbm8j8iy8m2e"]
 
-[ext_resource type="Script" uid="uid://cdmpmoqta8ojg" path="res://ml/duststorm.gd" id="1_t7pcg"]
+[ext_resource type="Script" uid="uid://cigf17a77vcjy" path="res://object_scripts/duststorm.gd" id="1_t7pcg"]
 
 [node name="duststorm" type="Node3D"]
 script = ExtResource("1_t7pcg")

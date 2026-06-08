@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://ckimc06adj6mt"]
+
+[ext_resource type="Script" uid="uid://dt84fudbqokww" path="res://object_scripts/solar_panel.gd" id="1_jywok"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvny2"]
+albedo_color = Color(0.005945804, 0.007432931, 0.019723443, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jywok"]
+material = SubResource("StandardMaterial3D_tvny2")
+size = Vector3(1.85, 0.15, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jywok"]
+albedo_color = Color(0.011890029, 0.06583031, 0.113120906, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rfvwu"]
+material = SubResource("StandardMaterial3D_jywok")
+size = Vector3(0.5, 0.05, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfvwu"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_isl37"]
+material = SubResource("StandardMaterial3D_rfvwu")
+size = Vector3(2.25, 0.6, 0.15)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tvny2"]
+top_radius = 0.025
+bottom_radius = 0.025
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jywok"]
+top_radius = 0.035
+bottom_radius = 0.035
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_isl37"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.38431373)
+
+[sub_resource type="BoxMesh" id="BoxMesh_clxfq"]
+material = SubResource("StandardMaterial3D_isl37")
+size = Vector3(2, 0.025, 2.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvny2"]
+size = Vector3(2.25, 0.8, 2.25)
+
+[node name="solar panel" type="StaticBody3D"]
+script = ExtResource("1_jywok")
+
+[node name="base" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jywok")
+
+[node name="thing1" type="MeshInstance3D" parent="base"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.435, 0.096147, -0.625)
+mesh = SubResource("BoxMesh_rfvwu")
+
+[node name="thing2" type="MeshInstance3D" parent="base"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.435, 0.096147, 0)
+mesh = SubResource("BoxMesh_rfvwu")
+
+[node name="thing3" type="MeshInstance3D" parent="base"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.435, 0.096147, 0.625)
+mesh = SubResource("BoxMesh_rfvwu")
+
+[node name="thing4" type="MeshInstance3D" parent="base"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.435, 0.096147, -0.625)
+mesh = SubResource("BoxMesh_rfvwu")
+
+[node name="thing5" type="MeshInstance3D" parent="base"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.435, 0.096147, 0)
+mesh = SubResource("BoxMesh_rfvwu")
+
+[node name="thing6" type="MeshInstance3D" parent="base"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.435, 0.096147, 0.625)
+mesh = SubResource("BoxMesh_rfvwu")
+
+[node name="side1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.087, -1.075)
+mesh = SubResource("BoxMesh_isl37")
+
+[node name="side2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.087, 1.075)
+mesh = SubResource("BoxMesh_isl37")
+
+[node name="thing1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.9912239, 0.073535025, 0)
+mesh = SubResource("CylinderMesh_tvny2")
+
+[node name="thing2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.0622413, 0.021008432, 0)
+mesh = SubResource("CylinderMesh_tvny2")
+
+[node name="bigthing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.0237117, 0.12347725, 0)
+mesh = SubResource("CylinderMesh_jywok")
+
+[node name="wipey" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.367407e-08, 0.029212654, 0.009995732, 1.2769257e-09, 0.99957323, -0.00029212653, -1, 5.4523053e-13, -4.3692733e-10, -1, 0.144, 0)
+mesh = SubResource("BoxMesh_clxfq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
+shape = SubResource("BoxShape3D_tvny2")
